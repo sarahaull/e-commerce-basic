@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link href="style.css" rel="stylesheet">
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        rel="stylesheet"
+    />
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Irish+Grover&family=Italianno&family=Jim+Nightshade&family=Jomhuria&family=Ovo&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+         @import url('https://fonts.googleapis.com/css2?family=Forum&family=Irish+Grover&family=Italianno&family=Jim+Nightshade&family=Jomhuria&family=Ovo&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+         @import url('https://fonts.googleapis.com/css2?family=Della+Respira&family=Forum&family=Irish+Grover&family=Italianno&family=Jim+Nightshade&family=Jomhuria&family=Ovo&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');         .font-forum {
+            font-family: 'Forum', serif;
+        }
+        .font-della-respira {
+            font-family: 'Della Respira', serif;
+        }
+
+         .font-irish-grover {
+              font-family: 'Irish Grover', cursive;
+            }
+         .footer-section {
+            background: linear-gradient(to right, #E195AB, #B03052);
+        }
+        .poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-pink-navbar px-4 py-3" style="background-color: #E195AB;">
+        <div class="flex items-center justify-between">
+            <!-- Logo/Brand -->
+           <a href="#" class="text-white text-2xl font-irish-grover font-bold">Shinyshop</a>
+            
+            <!-- Search Bar -->
+            <div id="cartContainer" class="flex-1 max-w-sm mx-6">
+                <div  class="relative">
+                    <input 
+                        type="text" 
+                        placeholder="Search" 
+                        class="w-full px-4 py-1.5 rounded-full text-white placeholder-white text-sm focus:outline-none"
+                        style="background-color: #B03052;"
+                    >
+                    <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-white">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" 
+                                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Right Icons -->
+            <div class="flex items-center space-x-4 flex-shrink-0">
+                <!-- Notification Bell -->
+                <button class="text-white hover:text-pink-100 transition-colors">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z" 
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M13.73 21C13.5542 21.3031 13.3019 21.5547 12.9982 21.7295C12.6946 21.9044 12.3504 21.9965 12 21.9965C11.6496 21.9965 11.3054 21.9044 11.0018 21.7295C10.6982 21.5547 10.4458 21.3031 10.27 21" 
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                
+                <!-- Shopping Cart -->
+                <a href="ker.html" class="text-white hover:text-pink-100 transition-colors">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 22C9.55228 22 10 21.5523 10 21C10 20.4477 9.55228 20 9 20C8.44772 20 8 20.4477 8 21C8 21.5523 8.44772 22 9 22Z" 
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M20 22C20.5523 22 21 21.5523 21 21C21 20.4477 20.5523 20 20 20C19.4477 20 19 20.4477 19 21C19 21.5523 19.4477 22 20 22Z" 
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M1 1H5L7.68 14.39C7.77144 14.8504 8.02191 15.264 8.38755 15.5583C8.75318 15.8526 9.2107 16.009 9.68 16H19.4C19.8693 16.009 20.3268 15.8526 20.6925 15.5583C21.0581 15.264 21.3086 14.8504 21.4 14.39L23 6H6" 
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                
+                <!-- Profile Avatar -->
+                <div class="w-full lg:w-1/2 flex justify-center">
+                <a href="profile.html" class="block w-10 h-10 rounded-full overflow-hidden border-8" style="border-color: #E6B8C5;">
+                    <img src="/img/Shin eunsoo.jpg" alt="Contoh Gambar" class="w-full h-full object-cover" />
+                </a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+     <div class="py-12 px-4 md:px-12 lg:py-16 ">
+        <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center mt-20 px-4">
+            <!-- Left Content -->
+            <div class="w-full lg:w-1/2 mb-10 lg:mb-0 pr-0 lg:pr-8">
+                <h3 class="text-gray-700 mb-2 font-medium">Produk Terbarunya</h3>   
+                 <h1 class="font-irish-grover text-4xl md:text-5xl font-bold text-black mb-4">Shinyshop</h1>
+                <p class="text-gray-600 mb-8 max-w-lg leading-relaxed">Your Path to Flawless Skin Start Here. Harness the Power of Nature for Beautiful Skin</p>
+                
+                <div class="border-t border-b border-gray-200 py-8 mb-8">
+                    <div class="flex justify-between max-w-lg">
+                        <div class="text-center">
+                             <div class="font-forum text-3xl font-bold text-gray-800">500+</div>
+                            <div class="text-xs text-gray-500">Organic Product</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="font-forum text-3xl font-bold text-gray-800">24K+</div>
+                            <div class="text-xs text-gray-500">Positive Review</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="font-forum text-3xl font-bold text-gray-800">10Y+</div>
+                            <div class="text-xs text-gray-500">Market Experience</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-6">
+                    <a href="login.html" class="bg-[#B03052] text-white px-8 py-3 rounded hover:bg-[#B03052] transition font-medium">Shop Now</a>
+                    <a href="#" class="text-gray-700 hover:text-rose-600 transition underline">Explore our Products</a>
+                </div>
+            </div>
+            
+            <!-- Right Image -->
+            <div class="w-full lg:w-1/2 flex justify-center ">
+                <!-- <div class="relative w-72 h-72 md:w-96 md:h-96 rounded-full bg-gradient-to-r from-pink-200 to-pink-300 p-4"> -->
+                    <div class="w-100 h-120 rounded-full overflow-hidden border-5 ml-28" style="border-color: #E6B8C5;"> 
+                        <img src="/img/winter.png" alt="Skincare Product" class="w-full h-full object-cover"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Popular Products  -->
+    <div class="max-w-7xl mx-auto mt-10">
+        
+        <h1 class="text-3xl font-bold text-gray-800 mb-8 text-center">Popular products</h1>
+        <!-- Products Container -->
+        <div  class="relative">
+            <!-- Scroll Buttons -->
+            <button id="scrollLeft" class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 z-10 bg-white shadow-lg rounded-full p-3 hover:bg-gray-50 transition-colors duration-200">
+                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+            </button>
+            
+            <button id="scrollRight" class="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 z-10 bg-white shadow-lg rounded-full p-3 hover:bg-gray-50 transition-colors duration-200">
+                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </button>
+
+            <!-- Products Scroll Container -->
+            <div id="productsContainer" class="scroll-container overflow-x-auto pb-4">
+                <div id="productsList" class="flex space-x-6 px-4">
+                    <!-- Products will be inserted here -->
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+
+ <!-- Kategori -->
+    <section class="py-10 bg-white">
+ 
+          <h2 class="text-center text-2xl font-semibold mb-6 border-b-2 border-gray-200 pb-2 w-fit mx-auto">Our Top Categori</h2>
+  <!-- Kategori Grid -->
+  <div class="flex flex-wrap justify-center gap-8 px-4">
+    <!-- Lipstick -->
+    <div class="w-[140px] text-center">
+      <div class="bg-[#D76C82] rounded w-full h-[100px] flex items-center justify-center">
+        <img src="/img/anim skin.png" alt="Make Up" class="h-[80px] object-contain" />
+      </div>
+      <p class="mt-2 text-gray-800 font-medium">Beauty</p>
+    </div>
+
+    <!-- Skin tint -->
+    <div class="w-[140px] text-center">
+      <div class="bg-[#A35167] rounded w-full h-[100px] flex items-center justify-center">
+        <img src="/img/fashion-removebg-preview.png" alt="Dress" class="h-[100px] object-contain" />
+      </div>
+      <p class="mt-2 text-gray-800 font-medium">Dress</p>
+    </div>
+
+    <!-- Cushion -->
+    <div class="w-[140px] text-center">
+      <div class="bg-[#E195AB] rounded w-full h-[100px] flex items-center justify-center">
+        <img src="/img/food.png" alt="food" class=" object-contain w-23 h-23" />
+      </div>
+      <p class="mt-2 text-gray-800 font-medium">Food</p>
+    </div>
+
+    <!-- property -->
+    <div class="w-[140px] text-center">
+      <div class="bg-[#E4B6C3] rounded w-full h-[100px] flex items-center justify-center">
+        <img src="/img/property.png" alt="Properti" class="h-[80px] object-contain" />
+      </div>
+      <p class="mt-2 text-gray-800 font-medium">Properti</p>
+    </div>
+
+
+    <!-- sepatu -->
+    <div class="w-[140px] text-center">
+      <div class="bg-[#af3858] rounded w-full h-[100px] flex items-center justify-center">
+        <img src="/img/sepatu.png" alt="Properti" class="h-[80px] object-contain" />
+      </div>
+      <p class="mt-2 text-gray-800 font-medium">Properti</p>
+    </div>
+     
+    
+  </div>
+</section>
+
+<!-- BA CHINA -->
+<div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Product Showcase Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Mask Lotus Product -->
+            <div class="product-card  rounded-lg overflow-hidden" style="background-color: #FFC6C6;">
+                <!-- Product Image Section -->
+                <div class="relative h-64 md:h-80 overflow-hidden">
+                    <!-- Decorative Elements - Lotus Leaves -->
+                    <div class="absolute top-7 left-2 ">
+                        <img src="/img/STELLA.png" alt="Lotus Leaves" class="h-60 object-contain -mt-12">
+                    </div>
+                    
+                    <!-- Product Image -->
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <!-- Product Package -->
+                        <div class="absolute left-24 md:left-32 top-12 md:top-16 z-10 transform -rotate-6">
+                            <img src="/img/P1.png" alt="Mask Lotus Package" class="h-40 md:h-48 object-contain shadow-lg">
+                        </div>
+                        
+                        <!-- Model Image -->
+                        <div class="absolute right-0  h-full flex items-center">
+                            <img src="/img/MODEL2.png" alt="Model with Mask" class="h-full md:h-full object-contain mt-9">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product Info Section -->
+                <div class="bg-white p-4 text-center">
+                    <h3 class="text-2xl text-[#B03052] font-della-respira ">Mask Lotus</h3>
+                    <p class="text-sm text-gray-600 mt-2">
+                        Contains Centella Asiatica, Hyaluronic Acid and lotus leaves as anti-inflammatory and keeps skin moist so it looks brighter.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Liip Barry Jump Product -->
+            <div class="product-card  rounded-lg overflow-hidden" style="background-color: #FFC6C6;">
+                <!-- Product Image Section -->
+                <div class="relative h-64 md:h-80 overflow-hidden">
+                    <!-- Decorative Elements - Berries -->
+                    <div class="absolute top-4 left-4 ">
+                        <img src="/img/BERRY.png" alt="Berries" class="h-30 object-contain transform scale-x-[-1] -mt-5">
+                    </div>
+                    
+                    <!-- Product Image -->
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <!-- Product Package -->
+                        <div class="absolute left-24 md:left-32 top-12 md:top-16 z-10">
+                            <img src="/img/2p.png" alt="Lip Gloss Package" class="h-40 md:h-48 object-contain shadow-lg">
+                        </div>
+                        
+                        <!-- Model Image -->
+                        <div class="absolute right-0  h-full flex items-center">
+                            <img src="/img/MODEL 1.png" alt="Model with Lip Gloss" class="h-full md:h-full object-contain mt-9 ">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product Info Section -->
+                <div class="bg-white p-4 text-center">
+                    <h3 class="text-2xl text-[#B03052] font-della-respira">Liip barry jump</h3>
+                    <p class="text-sm text-gray-600 mt-2">
+                        Contains Centella Asiatica, Hyaluronic Acid and lotus leaves as anti-inflammatory and keeps skin moist so it looks brighter.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+     <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h2 class="text-center text-2xl font-semibold mb-6 border-b-2 border-gray-200 pb-2 w-fit mx-auto">New products</h2>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex flex-col lg:flex-row gap-8 items-center">
+            <!-- Model Image Section -->
+            <div class="lg:w-1/2 flex justify-center">
+                <div class="relative">
+                    <div class="w-80 h-96 gradient-bg rounded-full flex items-center justify-center shadow-2xl" style="background-color: #B03052;">
+                        <img src="/img/gisele.png" alt="Beauty Model" class="w-60 h-80 object-cover rounded-2xl shadow-lg">
+                    </div>
+                    <!-- Floating product -->
+                    <div class="absolute -right-4 top-16 w-16 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center transform rotate-12">
+                        <img src="/img/mul.webp" alt="Beauty Model" class="w-20 h-20 object-cover rounded-2xl shadow-lg">
+                        <div class="w-8 h-12 bg-pink-300 rounded-sm"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- New Product 1 -->
+      <div class="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="product-card bg-[#E195AB] rounded-lg p-4 relative overflow-hidden">
+              <div class="absolute top-2 right-2 bg-green-400 text-white px-3 py-1 rounded-md">
+                  NEW !!!
+              </div>
+              <div class="w-full h-48 flex items-center justify-center">
+                  <img src="/img/thumbnail.webp" alt="mulberry" class="h-40 object-contain">
+              </div>
+              <div class="mt-4 text-center">
+                  <h3 class="font-medium">Eyeshadow Palette with Mirror</h3>
+                  <div class="mt-2">
+                      <p class="font-semibold">Rp 299.850</p>
+                  </div>
+                  <button class="mt-3 bg-[#D76C82] hover:bg-[#D76C82] text-white px-4 py-2 rounded-md w-full">
+                      Shop Now
+                  </button>
+              </div>
+          </div>
+
+          <!-- New Product 2 -->
+          <div class="product-card bg-[#E195AB] rounded-lg p-4 relative overflow-hidden">
+              <div class="absolute top-2 right-2 bg-green-400 text-white px-3 py-1 rounded-md">
+                  NEW !!!
+              </div>
+              <div class="w-full h-48 flex items-center justify-center">
+                  <img src="/img/parfume.webp" alt="kiwi" class="h-40 object-contain">
+              </div>
+              <div class="mt-4 text-center">
+                  <h3 class="font-medium">Dior J'adore</h3>
+                  <div class="mt-2">
+                      <p class="font-semibold">Rp 1.349.850</p>
+                  </div>
+                  <button class="mt-3 bg-[#D76C82] hover:bg-[#D76C82] text-white px-4 py-2 rounded-md w-full">
+                      Shop Now
+                  </button>
+              </div>
+          </div>
+      </div>
+        </div>
+    </div>
+
+
+    
+ <!-- saran produk -->
+  <div class="max-w-6xl mx-auto px-4 mt-6">
+    <div id="product-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <!-- Produk dimuat di sini -->
+    </div>
+  </div>
+ 
+
+
+     <!-- Footer Section -->
+    <footer class="footer-section text-white mt-12  ">
+        <div class="container mx-auto px-4 py-8 max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Contact Information -->
+                <div class="space-y-3">
+                    <h3 class="text-2xl font-semibold mb-4">Pelayanan</h3>
+                    <p>Bantuan</p>
+                    <p>Metode Pembayaran</p>
+                    <p>Detail Produk </p>
+                    <p>Lokasi</p>
+                    <p>Lacak pesanan </p>
+                    <p>Garansi </p>
+                    <p>Hubungi ShinyShop</p>
+                    
+                   <div class="flex justify-center items-center space-x-4 mt-6 mr-30">
+                    <a href="#" class="block">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" class="h-8">
+                    </a>
+                    <a href="#" class="block">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="h-8"></a>
+                    </div>
+                </div>
+                
+                <!-- Company Links - Column 1 -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4">Tentang Shinyshop</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:underline">Privasi</a></li>
+                        <li><a href="#" class="hover:underline">Kebijakan </a></li>
+                           <li><a href="#" class="hover:underline">Artikel</a></li>
+                              <li><a href="#" class="hover:underline">Blog</a></li>
+                                 <li><a href="#" class="hover:underline">Karir</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Company Links - Column 2 -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:underline">ssarahchannel@gmail.com</a></li>
+                        <li><a href="#" class="hover:underline">+0881025387767</a></li>
+                        <li><a href="#" class="hover:underline">@shynyshoping</a></li>
+                    </ul>
+                    
+                    <!-- Social Media Links -->
+                    <div class="flex space-x-4 mt-8">
+                        <a href="#" class="block text-2xl hover:text-pink-200 transition-colors">
+                            <img src="/img/instagram.png" alt="ig" class="h-7 w-7">
+                        </a>
+                        <a href="#" class="block text-2xl hover:text-pink-200 transition-colors">
+                            <img src="/img/google.png" alt="google" class="h-7 w-7">
+                        </a>
+                        <a href="#" class="block text-2xl hover:text-pink-200 transition-colors">
+                            <img src="/img/facebook-app-symbol.png" alt="fb" class="h-7 w-7">
+                        </a>
+                        <a href="#" class="block text-2xl hover:text-pink-200 transition-colors">
+                            <img src="/img/whatsapp.png" alt="wa" class="h-7 w-7">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+<script src="script.js"></script>
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+

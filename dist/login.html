@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="style.css" rel="stylesheet">
+    <style>
+
+        .login-container {
+            background-color: rgba(219, 144, 159, 0.85);
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            cursor: pointer;
+        }
+        .input-field {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 8px;
+        }
+        .login-button {
+            background-color: #A35167;
+            transition: background-color 0.3s;
+        }
+        .login-button:hover {
+            background-color: #923e4f;
+        }
+        .social-icon {
+            border: 1px solid white;
+            border-radius: 8px;
+            padding: 8px;
+            transition: transform 0.2s;
+        }
+        .social-icon:hover {
+            transform: scale(1.05);
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+        .divider-line {
+            flex-grow: 1;
+            height: 1px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4" style="background-image: url(/img/download\ \(6\).jpg);">
+    <div class="w-full max-w-md relative">
+        <!-- Back Button -->
+        <div class="back-button">
+            <a href="coba.html" class="back-button">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+        </a>
+        </div>
+
+        <!-- Login Container -->
+        <div class="login-container p-8 bg-[#D08599] br-16px">
+            <!-- Title -->
+            <h1 class="text-center text-2xl font-bold text-white mb-6">Welcome To Log In</h1>
+            
+            <!-- Login Form -->
+            <form class="space-y-4">
+                <!-- Email Field -->
+                <div class="mb-4">
+                    <label for="email" class="block text-white mb-2">Email</label>
+                    <input type="email" id="email" placeholder="Email- Addres" class="input-field w-full px-4 py-2 text-gray-700" />
+                </div>
+                
+                <!-- Password Field -->
+                <div class="mb-4">
+                    <label for="password" class="block text-white mb-2">Password</label>
+                    <input type="password" id="password" class="input-field w-full px-4 py-2 text-gray-700" />
+                </div>
+                
+                <!-- Links -->
+                <div class="flex justify-end">
+                    <div class="text-right">
+                        <a href="#" class="block text-white text-sm italic hover:underline">Recovery Password</a>
+                        <a href="#" class="block text-white text-sm italic hover:underline">Creat Acount</a>
+                    </div>
+                </div>
+                
+                <!-- Login Button -->
+                <div  class="mt-6">
+                    <a href="home2.html" class="login-button w-full py-2 text-white font-bold rounded-md block text-center">Login</a>
+                </div>
+                
+                <!-- Divider -->
+                <div class="divider my-6">
+                    <div class="divider-line mr-3"></div>
+                    <span class="text-sm">or continue with</span>
+                    <div class="divider-line ml-3"></div>
+                </div>
+                
+                <!-- Social Login -->
+                <div class="flex justify-center space-x-4">
+                    <a href="#" class="social-icon">
+                        <img src="https://cdn.cdnlogo.com/logos/g/35/google-icon.svg" alt="Google" class="w-6 h-6">
+                    </a>
+                    <a href="#" class="social-icon">
+                        <img src="https://cdn.cdnlogo.com/logos/w/43/whatsapp.svg" alt="WhatsApp" class="w-6 h-6">
+                    </a>
+                </div>
+                
+                <!-- Google Play Badge -->
+                <div class="flex justify-center mt-4">
+                    <a href="#">
+                        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" class="h-10">
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+

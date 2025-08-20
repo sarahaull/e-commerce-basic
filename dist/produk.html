@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Detail</title>
+  <script defer src="script.js"></script>
+  <link href="style.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Irish+Grover&family=Italianno&family=Jim+Nightshade&family=Jomhuria&family=Ovo&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+   @import url('https://fonts.googleapis.com/css2?family=Della+Respira&family=Forum&family=Irish+Grover&family=Italianno&family=Jim+Nightshade&family=Jomhuria&family=Ovo&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');         
+
+     .footer-section {
+            background: linear-gradient(to right, #E195AB, #B03052);
+        }
+    .font-irish-grover {
+              font-family: 'Irish Grover', cursive;
+            }
+     .font-della-respira {
+            font-family: 'Della Respira', serif;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-pink-navbar px-4 py-3" style="background-color: #E195AB;">
+        <div class="flex items-center justify-between">
+            <!-- Logo/Brand -->
+           <a href="#" class="text-white text-2xl font-irish-grover font-bold">Shinyshop</a>
+            
+            <!-- Search Bar -->
+            <div class="flex-1 max-w-sm mx-6">
+                <div class="relative">
+                    <input 
+                        type="text" 
+                        placeholder="Search" 
+                        class="w-full px-4 py-1.5 rounded-full text-white placeholder-white text-sm focus:outline-none"
+                        style="background-color: #B03052;"
+                    >
+                    <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-white">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" 
+                                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Right Icons -->
+            <div class="flex items-center space-x-4 flex-shrink-0">
+                <!-- Notification Bell -->
+                <button class="text-white hover:text-pink-100 transition-colors">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z" 
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M13.73 21C13.5542 21.3031 13.3019 21.5547 12.9982 21.7295C12.6946 21.9044 12.3504 21.9965 12 21.9965C11.6496 21.9965 11.3054 21.9044 11.0018 21.7295C10.6982 21.5547 10.4458 21.3031 10.27 21" 
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                
+                <!-- Shopping Cart -->
+                <a href="ker.html" class="text-white hover:text-pink-100 transition-colors">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 22C9.55228 22 10 21.5523 10 21C10 20.4477 9.55228 20 9 20C8.44772 20 8 20.4477 8 21C8 21.5523 8.44772 22 9 22Z" 
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M20 22C20.5523 22 21 21.5523 21 21C21 20.4477 20.5523 20 20 20C19.4477 20 19 20.4477 19 21C19 21.5523 19.4477 22 20 22Z" 
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M1 1H5L7.68 14.39C7.77144 14.8504 8.02191 15.264 8.38755 15.5583C8.75318 15.8526 9.2107 16.009 9.68 16H19.4C19.8693 16.009 20.3268 15.8526 20.6925 15.5583C21.0581 15.264 21.3086 14.8504 21.4 14.39L23 6H6" 
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                
+                <!-- Profile Avatar -->
+                <div class="w-full lg:w-1/2 flex justify-center">
+                <a href="profile.html" class="block w-10 h-10 rounded-full overflow-hidden border-8" style="border-color: #E6B8C5;">
+                    <img src="/img/MODEL 1.png" alt="Contoh Gambar" class="w-full h-full object-cover" />
+                </a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+
+ <!--  container Api Detail Produk -->
+    <div class="pt-20">
+  <!-- Api Detail Produk -->
+  <div id="productDetail" class="max-w-4xl mx-auto bg-white rounded-xl shadow-md p-6 mt-6" style="background-color: #E3B7C4;"></div>
+</div>
+
+
+
+ <!--  Rating -->
+  <div class="max-w-2xl mx-auto border-white p-6 bg-[#ca93a1] rounded mt-6">
+  <div class="flex flex-col md:flex-row">
+    <!-- Rating Kiri -->
+    <div class="w-full md:w-1/4 text-white flex flex-col items-center justify-center mb-4 md:mb-0">
+      <p class="text-4xl font-bold font-della-respira">5.0 <span class="text-lg font-normal">dari 5</span></p>
+      <div class="flex mt-2">
+        <span class="text-yellow-400 text-2xl">&#9733;</span>
+        <span class="text-yellow-400 text-2xl">&#9733;</span>
+        <span class="text-yellow-400 text-2xl">&#9733;</span>
+        <span class="text-yellow-400 text-2xl">&#9733;</span>
+        <span class="text-yellow-400 text-2xl">&#9733;</span>
+      </div>
+    </div>
+
+    <!-- Bar Penilaian Kanan -->
+    <div class="w-full md:w-3/4 space-y-3">
+      <!-- Bintang 5 -->
+      <div class="flex items-center space-x-3">
+        <span class="text-white text-sm w-6">5</span>
+        <div class="w-full h-4 bg-gray-300 rounded">
+          <div class="h-4 bg-[#B03052] rounded" style="width: 100%;"></div>
+        </div>
+      </div>
+      <!-- Bintang 4 -->
+      <div class="flex items-center space-x-3">
+        <span class="text-white text-sm w-6">4</span>
+        <div class="w-full h-4 bg-gray-300 rounded">
+          <div class="h-4 bg-[#B03052] rounded" style="width: 80%;"></div>
+        </div>
+      </div>
+      <!-- Bintang 3 -->
+      <div class="flex items-center space-x-3">
+        <span class="text-white text-sm w-6">3</span>
+        <div class="w-full h-4 bg-gray-300 rounded">
+          <div class="h-4 bg-[#B03052] rounded" style="width: 20%;"></div>
+        </div>
+      </div>
+      <!-- Bintang 2 -->
+      <div class="flex items-center space-x-3">
+        <span class="text-white text-sm w-6">2</span>
+        <div class="w-full h-4 bg-gray-300 rounded">
+          <div class="h-4 bg-[#B03052] rounded" style="width: 10%;"></div>
+        </div>
+      </div>
+      <!-- Bintang 1 -->
+      <div class="flex items-center space-x-3">
+        <span class="text-white text-sm w-6">1</span>
+        <div class="w-full h-4 bg-gray-300 rounded">
+          <div class="h-4 bg-[#B03052] rounded" style="width: 5%;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+     
+    
+
+
+
+
+
+<!-- Review Header -->
+ 
+ <!-- Form Tambah Ulasan -->
+  <div id="daftar-ulasan" class="max-w-2xl mx-auto mt-6 bg-white p-6 rounded-xl shadow-md space-y-4">
+
+    
+    <!-- Input Nama -->
+    <input 
+      id="input-nama"
+      type="text" 
+      placeholder="Nama Pengguna" 
+      class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#f7f2f3] placeholder-gray-400 text-sm" />
+      
+    <!-- Input Ulasan -->
+    <input 
+      id="input-ulasan"
+      type="text" 
+      placeholder="Tambahkan Ulasan..." 
+      class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#f7f2f3] placeholder-gray-400 text-sm" />
+
+    <!-- Pilih Rating -->
+    <div class="flex items-center space-x-1" id="rating-stars">
+      <span class="star text-2xl cursor-pointer text-gray-300" data-value="1">★</span>
+      <span class="star text-2xl cursor-pointer text-gray-300" data-value="2">★</span>
+      <span class="star text-2xl cursor-pointer text-gray-300" data-value="3">★</span>
+      <span class="star text-2xl cursor-pointer text-gray-300" data-value="4">★</span>
+      <span class="star text-2xl cursor-pointer text-gray-300" data-value="5">★</span>
+    </div>
+    <input  type="hidden" id="rating-value"  value="0" />
+
+    <!-- Tombol Kirim -->
+    <button 
+      onclick="tambahUlasan()" 
+      class="bg-[#E195AB] text-white px-10 py-3 rounded-full font-semibold block mx-auto hover:bg-[#B03052] transition cursor-pointer mr-6 ">
+      Kirim
+    </button>
+  </div>
+</div>
+    
+
+ <!-- saran produk -->
+  <div class="max-w-6xl mx-auto px-4 mt-6">
+      <div id="product-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+
+  </div>
+ 
+
+
+
+<!-- Footer Section -->
+    <footer class="footer-section text-white mt-12  ">
+        <div class="container mx-auto px-4 py-8 max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Contact Information -->
+                <div class="space-y-3">
+                    <h3 class="text-2xl font-semibold mb-4">Pelayanan</h3>
+                    <p>Bantuan</p>
+                    <p>Metode Pembayaran</p>
+                    <p>Detail Produk </p>
+                    <p>Lokasi</p>
+                    <p>Lacak pesanan </p>
+                    <p>Garansi </p>
+                    <p>Hubungi ShinyShop</p>
+                    
+                   <div class="flex justify-center items-center space-x-4 mt-6 mr-30">
+                    <a href="#" class="block">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" class="h-8">
+                    </a>
+                    <a href="#" class="block">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="h-8"></a>
+                    </div>
+                </div>
+                
+                <!-- Company Links - Column 1 -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4">Tentang Shinyshop</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:underline">Privasi</a></li>
+                        <li><a href="#" class="hover:underline">Kebijakan </a></li>
+                           <li><a href="#" class="hover:underline">Artikel</a></li>
+                              <li><a href="#" class="hover:underline">Blog</a></li>
+                                 <li><a href="#" class="hover:underline">Karir</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Company Links - Column 2 -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:underline">ssarahchannel@gmail.com</a></li>
+                        <li><a href="#" class="hover:underline">+0881025387767</a></li>
+                        <li><a href="#" class="hover:underline">@shynyshoping</a></li>
+                    </ul>
+                    
+                    <!-- Social Media Links -->
+                    <div class="flex space-x-4 mt-8">
+                        <a href="#" class="block text-2xl hover:text-pink-200 transition-colors">
+                            <img src="/img/instagram.png" alt="ig" class="h-7 w-7">
+                        </a>
+                        <a href="#" class="block text-2xl hover:text-pink-200 transition-colors">
+                            <img src="/img/google.png" alt="google" class="h-7 w-7">
+                        </a>
+                        <a href="#" class="block text-2xl hover:text-pink-200 transition-colors">
+                            <img src="/img/facebook-app-symbol.png" alt="fb" class="h-7 w-7">
+                        </a>
+                        <a href="#" class="block text-2xl hover:text-pink-200 transition-colors">
+                            <img src="/img/whatsapp.png" alt="wa" class="h-7 w-7">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+

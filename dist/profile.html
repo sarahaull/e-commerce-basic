@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Profile</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+     <div class="flex min-h-screen">
+        <!-- Sidebar Menu -->
+        <div class="w-56 bg-[#A35167] text-white">
+            <!-- Profile Header -->
+            <div class="px-4 py-6 flex items-center">
+                <div class="relative">
+                    <img src="/img/Shin eunsoo.jpg" alt="Profile Picture" class="rounded-full w-12 h-12">
+                </div>
+                <div class="ml-3">
+                    <p class="font-semibold text-white">Shin eun sho123</p>
+                    <p class="text-xs text-gray-200">
+                        <i class="fas fa-user text-xs"></i> Edit Profile
+                    </p>
+                </div>
+            </div>
+
+            <!-- Menu Items -->
+            <div class="mt-6">
+                <a href="profile.html" class=" px-4 py-3  hover:bg-pink-200 flex items-center">
+                    <div class="w-8 text-center">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span class="ml-2">Akun Saya</span>
+                </a>
+                <a href="tampilan order.html" class="px-4 py-3  hover:bg-pink-200 flex items-center">
+                    <div class="w-8 text-center">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <span class="ml-2">Pesanan Saya</span>
+                </a>
+                <a href="#" class=" px-4 py-3  hover:bg-pink-200 flex items-center">
+                    <div class="w-8 text-center">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <span class="ml-2">Diskon Kupon</span>
+                </a>
+                <a href="coba.html" class=" px-4 py-3 hover:bg-pink-200 flex items-center">
+                    <div class="w-8 text-center">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <span class="ml-2">Keluar</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-8 bg-white">
+            <div class="max-w-3xl mx-auto border border-gray-200 rounded-md p-6">
+                <!-- Profile Header -->
+                <h2 class="text-2xl font-semibold mb-1">Profile Saya</h2>
+                <p class="text-gray-500 text-sm mb-6">Kelola informasi profil Anda untuk mengontrol, melindungi dan mengamankan akun</p>
+                <hr class="mb-6">
+
+                <!-- Profile Form -->
+                <div class="flex">
+                    <div class="w-2/3 pr-8">
+                        <form>
+                            <!-- Username -->
+                            <div class="mb-5">
+                                <label class="block mb-2 text-sm font-medium">User Name :</label>
+                                <input type="text" value="Shin eun soo123" 
+                                    class="w-full px-3 py-2 bg-[#CCCCCC] text-white rounded-md" readonly>
+                                <p class="text-xs text-gray-500 mt-1">Username hanya dapat diubah satu (1) kali.</p>
+                            </div>
+
+                            <!-- Nama -->
+                            <div class="mb-5">
+                                <label class="block mb-2 text-sm font-medium">Nama :</label>
+                                <input type="text" value="Shin eun soo" 
+                                    class="w-full px-3 py-2 bg-[#D76C82] text-white rounded-md">
+                            </div>
+
+                            <!-- Email -->
+                            <div class="mb-5">
+                                <label class="block mb-2 text-sm font-medium">Email :</label>
+                                <div class="flex">
+                                    <input type="email" value="s*********@gmail.com" 
+                                        class="flex-1 px-3 py-2 border border-gray-300 rounded-l-md" readonly>
+                                    <button type="button" 
+                                        class="px-3 py-2 bg-white border border-gray-300 rounded-r-md text-gray-700 text-sm">UBAH</button>
+                                </div>
+                            </div>
+
+                            <!-- Nomor Telepon -->
+                            <div class="mb-5">
+                                <label class="block mb-2 text-sm font-medium">No Telp :</label>
+                                <div class="flex">
+                                    <input type="text" value="**********67" 
+                                        class="flex-1 px-3 py-2 border border-gray-300 rounded-l-md" readonly>
+                                    <button type="button" 
+                                        class="px-3 py-2 bg-white border border-gray-300 rounded-r-md text-gray-700 text-sm">UBAH</button>
+                                </div>
+                            </div>
+
+                            <!-- Jenis Kelamin -->
+                            <div class="mb-5">
+                                <label class="block mb-2 text-sm font-medium">Jenis Kelamin</label>
+                                <div class="flex space-x-6">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="gender" class="mr-2">
+                                        <span>Laki-laki</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="gender" checked class="mr-2">
+                                        <span>Perempuan</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="gender" class="mr-2">
+                                        <span>Lainnya</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Tanggal Lahir -->
+                            <div class="mb-6">
+                                <label class="block mb-2 text-sm font-medium">Tanggal Lahir</label>
+                                <div class="flex space-x-2">
+                                    <select class="flex-1 px-3 py-2 border border-gray-300 rounded-md bg-white">
+                                        <option>Tanggal</option>
+                                    </select>
+                                    <select class="flex-1 px-3 py-2 border border-gray-300 rounded-md bg-white">
+                                        <option>Bulan</option>
+                                    </select>
+                                    <select class="flex-1 px-3 py-2 border border-gray-300 rounded-md bg-white">
+                                        <option>Tahun</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div>
+                                <button type="submit" class="px-6 py-2 bg-[#B03052] text-white rounded-md">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Profile Photo Section -->
+                    <div class="w-1/3 flex flex-col items-center">
+                        <div class="mb-4">
+                            <img src="/img/Shin eunsoo.jpg" alt="Profile Picture" class="rounded-full w-32 h-32 object-cover border-4 border-gray-200">
+                        </div>
+                        <button class="mb-4 px-4 py-1 border border-gray-300 rounded-md text-sm">Pilih Gambar</button>
+                        <div class="text-xs text-gray-500 text-center">
+                            <p>Ukuran gambar: maks 1 MB</p>
+                            <p>Format gambar: JPG, PNG</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
