@@ -900,7 +900,7 @@
                 </a>
                 
                 <a href="profile.html" class="avatar">
-                    <img src="/img/Giselle2.jpg" alt="Profile" />
+                    <img src="img/Giselle2.jpg" alt="Profile" />
                 </a>
                 
                 <!-- Mobile Menu Toggle -->
@@ -1137,7 +1137,7 @@
                     totalPrice += subtotal;
                 }
 
-                const imgSrc = item.thumbnail || '/img/default.png';
+                const imgSrc = item.thumbnail || 'img/default.png';
                 const title = item.title || 'Product';
                 const nameLower = title.toLowerCase();
 
@@ -1155,7 +1155,7 @@
                                ${isChecked ? 'checked' : ''}
                                onchange="toggleItem(${index})" />
                         <img src="${imgSrc}" alt="${title}" class="item-img" 
-                             onerror="this.src='/img/default.png'" />
+                             onerror="this.src='img/default.png'" />
                         <div class="item-info">
                             <div class="name">${displayTitle}</div>
                             <div class="price">${formatPrice(price)}</div>
