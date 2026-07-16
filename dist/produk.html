@@ -3,270 +3,1336 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Product Detail</title>
-  <script defer src="script.js"></script>
+  <title>Shinyshop · Product Detail</title>
   <link href="style.css" rel="stylesheet">
   <style>
+    /* ===== FONTS ===== */
     @import url('https://fonts.googleapis.com/css2?family=Irish+Grover&family=Italianno&family=Jim+Nightshade&family=Jomhuria&family=Ovo&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-   @import url('https://fonts.googleapis.com/css2?family=Della+Respira&family=Forum&family=Irish+Grover&family=Italianno&family=Jim+Nightshade&family=Jomhuria&family=Ovo&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');         
+    @import url('https://fonts.googleapis.com/css2?family=Della+Respira&family=Forum&family=Irish+Grover&family=Italianno&family=Jim+Nightshade&family=Jomhuria&family=Ovo&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
-     .footer-section {
-            background: linear-gradient(to right, #E195AB, #B03052);
-        }
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #faf0f2;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #4a2c33;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ===== UTILITY ===== */
     .font-irish-grover {
-              font-family: 'Irish Grover', cursive;
-            }
-     .font-della-respira {
-            font-family: 'Della Respira', serif;
-        }
+      font-family: 'Irish Grover', cursive !important;
+    }
+    .font-della-respira {
+      font-family: 'Della Respira', serif;
+    }
+    .font-playfair {
+      font-family: 'Playfair Display', serif;
+    }
 
-    </style>
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      width: 100%;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    /* ===== DECORATIVE ELEMENTS ===== */
+    .floral-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 0.5rem 0 1rem;
+      font-size: 1.2rem;
+      color: #d4a0b0;
+      letter-spacing: 4px;
+    }
+
+    .floral-divider span {
+      opacity: 0.6;
+    }
+
+    /* ===== NAVBAR - PINK TRANSPARAN ===== */
+    .navbar-custom {
+      background: rgba(225, 149, 171, 0.2);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 4px 30px rgba(225, 149, 171, 0.06);
+      padding: 0.7rem 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      display: flex;
+      justify-content: center;
+    }
+
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      width: 100%;
+      padding: 0 1.5rem;
+    }
+
+    .brand {
+      font-family: 'Irish Grover', cursive !important;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #8a3a52;
+      letter-spacing: -0.5px;
+      flex-shrink: 0;
+      position: relative;
+      text-shadow: 0 2px 20px rgba(255,255,255,0.2);
+    }
+
+    .brand::after {
+      content: '✦';
+      font-size: 0.8rem;
+      position: absolute;
+      top: -6px;
+      right: -18px;
+      color: #d4a0b0;
+    }
+
+    .search-wrap {
+      flex: 1 1 280px;
+      max-width: 380px;
+    }
+
+    .search-wrap input {
+      width: 100%;
+      padding: 0.55rem 1.2rem 0.55rem 1.8rem;
+      border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.15);
+      color: #4a2c33;
+      font-size: 0.85rem;
+      outline: none;
+      transition: 0.3s;
+      font-family: 'Poppins', sans-serif;
+      backdrop-filter: blur(4px);
+    }
+
+    .search-wrap input::placeholder {
+      color: rgba(74, 44, 51, 0.4);
+      font-weight: 300;
+    }
+
+    .search-wrap input:focus {
+      border-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 0 0 4px rgba(225, 149, 171, 0.08);
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-shrink: 0;
+    }
+
+    .nav-icon-btn {
+      color: #8a3a52;
+      transition: 0.25s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      padding: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      position: relative;
+      backdrop-filter: blur(4px);
+      border: none;
+      cursor: pointer;
+    }
+
+    .nav-icon-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
+      color: #6a2a3a;
+    }
+
+    /* ===== NOTIFICATION BADGE - TANPA ANGKA ===== */
+    .nav-icon-btn .badge-dot {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      width: 10px;
+      height: 10px;
+      background: #d4527c;
+      border-radius: 50%;
+      border: 2px solid white;
+      box-shadow: 0 2px 8px rgba(212, 82, 124, 0.3);
+      display: none;
+      animation: pulseDot 2s ease-in-out infinite;
+    }
+
+    .nav-icon-btn .badge-dot.active {
+      display: block;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.7; }
+    }
+
+    /* ===== CART BADGE STYLE ===== */
+    .nav-icon-btn .badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      min-width: 20px;
+      height: 20px;
+      background: #d4527c;
+      color: #fff;
+      font-size: 0.6rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      border: 2px solid white;
+      box-shadow: 0 2px 8px rgba(212, 82, 124, 0.3);
+      padding: 0 5px;
+      transition: all 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1;
+      z-index: 5;
+    }
+
+    .nav-icon-btn .badge.pulse {
+      animation: badgePulse 0.4s ease;
+    }
+
+    @keyframes badgePulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.5); }
+      100% { transform: scale(1); }
+    }
+
+    .avatar-wrapper {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2.5px solid rgba(255, 255, 255, 0.25);
+      transition: 0.3s;
+      flex-shrink: 0;
+    }
+
+    .avatar-wrapper:hover {
+      transform: scale(1.06);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .avatar-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ===== MAIN ===== */
+    .main-container {
+      padding-top: 6rem;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ===== PRODUCT CARD ===== */
+    #productDetail {
+      background: #ffffff !important;
+      border-radius: 32px !important;
+      padding: 2.5rem !important;
+      box-shadow: 0 12px 48px rgba(225, 149, 171, 0.08) !important;
+      border: 1px solid rgba(225, 149, 171, 0.10) !important;
+      transition: 0.4s;
+      margin: 1rem auto;
+      width: 100%;
+      max-width: 800px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #productDetail::before {
+      content: '';
+      position: absolute;
+      top: -60%;
+      right: -20%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(225, 149, 171, 0.05) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    #productDetail::after {
+      content: '';
+      position: absolute;
+      bottom: -40%;
+      left: -10%;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(225, 149, 171, 0.04) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    #productDetail:hover {
+      box-shadow: 0 20px 60px rgba(225, 149, 171, 0.12) !important;
+      transform: translateY(-2px);
+    }
+
+    /* ===== RATING BOX ===== */
+    .rating-box {
+      background: linear-gradient(145deg, #f8e8ec, #f0dce2) !important;
+      border-radius: 28px !important;
+      padding: 2rem 2.5rem !important;
+      box-shadow: 0 8px 32px rgba(225, 149, 171, 0.08) !important;
+      margin: 1.5rem auto;
+      width: 100%;
+      max-width: 700px;
+      border: 1px solid rgba(225, 149, 171, 0.08);
+    }
+
+    .rating-left .big-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #b84a6a;
+      letter-spacing: -1px;
+    }
+
+    .star-display {
+      color: #e8b4b8;
+      font-size: 2rem;
+      letter-spacing: 4px;
+    }
+
+    .star-display .filled {
+      color: #f5c6cb;
+    }
+
+    .rating-bar-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .rating-bar-wrap span {
+      color: #7a5a62;
+      font-size: 0.8rem;
+      min-width: 20px;
+      font-weight: 500;
+    }
+
+    .rating-bar-track {
+      flex: 1;
+      height: 5px;
+      background: rgba(184, 74, 106, 0.08);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .rating-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #e8b4b8, #d4a0b0);
+      border-radius: 20px;
+    }
+
+    /* ===== REVIEW CONTAINER ===== */
+    .review-container {
+      background: #ffffff !important;
+      border-radius: 28px !important;
+      box-shadow: 0 8px 32px rgba(225, 149, 171, 0.05) !important;
+      border: 1px solid rgba(225, 149, 171, 0.08) !important;
+      margin: 1.5rem auto;
+      width: 100%;
+      max-width: 700px;
+      padding: 2rem 2rem 1.5rem;
+      max-height: 500px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .review-container .review-form-box {
+      background: transparent !important;
+      padding: 0 !important;
+      box-shadow: none !important;
+      border: none !important;
+      margin: 0 0 1.2rem 0 !important;
+      flex-shrink: 0;
+    }
+
+    .review-container .review-form-box input {
+      width: 100%;
+      padding: 0.7rem 1.2rem;
+      border-radius: 50px !important;
+      border: 1.5px solid rgba(225, 149, 171, 0.12) !important;
+      background: #fcf7f8;
+      font-size: 0.85rem;
+      transition: 0.3s;
+      outline: none;
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 0.8rem;
+    }
+
+    .review-container .review-form-box input:last-of-type {
+      margin-bottom: 1rem;
+    }
+
+    .review-container .review-form-box input:focus {
+      border-color: #d4a0b0 !important;
+      box-shadow: 0 0 0 4px rgba(225, 149, 171, 0.06);
+      background: #fff;
+    }
+
+    .review-container .star-picker .star {
+      font-size: 2rem !important;
+      transition: 0.2s;
+      cursor: pointer;
+      color: #d1d5db;
+      line-height: 1;
+    }
+
+    .review-container .star-picker .star.active {
+      color: #fbbf24 !important;
+    }
+
+    .review-container .star-picker .star:hover {
+      transform: scale(1.12);
+      color: #f59e0b !important;
+    }
+
+    .review-container .btn-send {
+      background: linear-gradient(145deg, #f0dce2, #e8c8d0) !important;
+      border: none !important;
+      padding: 0.6rem 2.5rem !important;
+      border-radius: 50px !important;
+      font-weight: 500 !important;
+      color: #7a5a62 !important;
+      transition: 0.3s !important;
+      box-shadow: 0 4px 16px rgba(225, 149, 171, 0.12) !important;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 0.85rem;
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: 0.5px;
+      margin-top: 0.3rem;
+    }
+
+    .review-container .btn-send:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 28px rgba(225, 149, 171, 0.18) !important;
+      background: linear-gradient(145deg, #e8c8d0, #dbb4be) !important;
+      color: #5a3a42 !important;
+    }
+
+    /* ===== DAFTAR ULASAN ===== */
+    #daftar-ulasan-container {
+      flex: 1;
+      overflow-y: auto;
+      padding-right: 0.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      scroll-behavior: smooth;
+    }
+
+    #daftar-ulasan-container::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    #daftar-ulasan-container::-webkit-scrollbar-track {
+      background: rgba(225, 149, 171, 0.05);
+      border-radius: 10px;
+    }
+
+    #daftar-ulasan-container::-webkit-scrollbar-thumb {
+      background: rgba(225, 149, 171, 0.25);
+      border-radius: 10px;
+    }
+
+    #daftar-ulasan-container::-webkit-scrollbar-thumb:hover {
+      background: rgba(225, 149, 171, 0.4);
+    }
+
+    .review-card {
+      background: linear-gradient(145deg, #fce4ec, #f8d7e0);
+      border-radius: 14px;
+      padding: 0.8rem 1.2rem;
+      border: 1px solid rgba(225, 149, 171, 0.15);
+      transition: 0.3s;
+      animation: fadeInUp 0.3s ease;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(225, 149, 171, 0.06);
+    }
+
+    .review-card:hover {
+      background: linear-gradient(145deg, #f8d7e0, #f0c8d4);
+      border-color: rgba(225, 149, 171, 0.25);
+      box-shadow: 0 4px 16px rgba(225, 149, 171, 0.10);
+      transform: translateY(-1px);
+    }
+
+    .review-card .review-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.1rem;
+    }
+
+    .review-card .review-name {
+      font-weight: 600;
+      color: #b84a6a;
+      font-size: 0.85rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .review-card .review-stars {
+      display: flex;
+      gap: 1px;
+      font-size: 0.9rem;
+    }
+
+    .review-card .review-stars .star-filled {
+      color: #fbbf24 !important;
+    }
+
+    .review-card .review-stars .star-empty {
+      color: #d1d5db !important;
+    }
+
+    .review-card .review-text {
+      color: #5a3a42;
+      font-size: 0.8rem;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    .review-card .review-date {
+      color: #a07a82;
+      font-size: 0.6rem;
+      margin-top: 0.1rem;
+      font-weight: 300;
+    }
+
+    /* ===== PRODUCT SUGGESTION ===== */
+    .product-grid-suggestion {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 1.5rem;
+      width: 100%;
+    }
+
+    .product-card-suggestion {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.2rem 1rem 1.2rem;
+      box-shadow: 0 4px 20px rgba(225, 149, 171, 0.04);
+      transition: 0.4s;
+      border: 1px solid rgba(225, 149, 171, 0.06);
+      text-align: center;
+    }
+
+    .product-card-suggestion:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(225, 149, 171, 0.08);
+      border-color: rgba(225, 149, 171, 0.12);
+    }
+
+    .product-card-suggestion img {
+      border-radius: 16px;
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      background: #faf0f2;
+    }
+
+    .product-card-suggestion .pname {
+      font-weight: 400;
+      margin-top: 0.6rem;
+      font-size: 0.9rem;
+      color: #4a2c33;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .product-card-suggestion .pprice {
+      color: #b84a6a;
+      font-weight: 600;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      margin-top: 0.1rem;
+    }
+
+    /* ===== SECTION TITLE ===== */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #b84a6a;
+      margin-bottom: 0.2rem;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #a07a82;
+      font-weight: 300;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+    }
+
+    /* ===== FOOTER - PINK GRADIENT ===== */
+    .footer-section {
+      background: linear-gradient(145deg, #f8d7e0, #e8b4b8, #d4a0b0);
+      border-radius: 48px 48px 0 0;
+      padding: 3rem 2rem 2rem;
+      margin-top: 3rem;
+      color: #4a2c33;
+      width: 100%;
+      border-top: 2px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 -8px 40px rgba(225, 149, 171, 0.06);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .footer-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      color: #6a2a3a;
+      letter-spacing: -0.3px;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.4rem;
+    }
+
+    .footer-section a {
+      color: #5a3a42;
+      opacity: 0.85;
+      transition: 0.3s;
+      font-size: 0.9rem;
+    }
+
+    .footer-section a:hover {
+      opacity: 1;
+      color: #6a2a3a;
+      transform: translateX(4px);
+      display: inline-block;
+    }
+
+    /* ===== SOCIAL ICONS ===== */
+    .social-icons {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: 0.3s;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    }
+
+    .social-icons a:hover {
+      background: rgba(255, 255, 255, 0.45);
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .social-icons a img {
+      height: 22px;
+      width: 22px;
+      opacity: 0.85;
+      filter: none;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover img {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    /* ===== BADGE GROUP ===== */
+    .badge-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .badge-group img {
+      height: 38px;
+      object-fit: contain;
+      transition: 0.3s;
+      border-radius: 6px;
+      filter: brightness(0.98);
+    }
+
+    .badge-group a:hover img {
+      transform: scale(1.04);
+      filter: brightness(1.05);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .navbar-inner {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding: 0 1rem;
+      }
+
+      .brand {
+        font-size: 1.5rem;
+      }
+
+      .brand::after {
+        display: none;
+      }
+
+      .search-wrap {
+        flex: 1 1 100%;
+        order: 3;
+        max-width: 100%;
+        margin-top: 0.2rem;
+      }
+
+      .nav-icons {
+        gap: 0.6rem;
+      }
+
+      #productDetail {
+        padding: 1.5rem !important;
+        border-radius: 24px !important;
+      }
+
+      .rating-box {
+        padding: 1.5rem !important;
+        border-radius: 24px !important;
+      }
+
+      .rating-left .big-number {
+        font-size: 2.4rem;
+      }
+
+      .product-grid-suggestion {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+      }
+
+      .product-card-suggestion {
+        padding: 1rem 0.8rem 1rem;
+        border-radius: 18px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .footer-section {
+        padding: 2rem 1.5rem 1.5rem;
+        border-radius: 32px 32px 0 0;
+      }
+
+      .review-container {
+        padding: 1.5rem 1.2rem 1.2rem;
+        max-height: 420px;
+        border-radius: 24px;
+        margin: 1rem auto;
+      }
+
+      .review-container .review-form-box input {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .review-container .star-picker .star {
+        font-size: 1.8rem !important;
+      }
+
+      .review-container .btn-send {
+        padding: 0.5rem 2rem !important;
+        font-size: 0.8rem;
+      }
+
+      .review-card {
+        padding: 0.6rem 1rem;
+        border-radius: 12px;
+      }
+
+      .review-card .review-stars {
+        font-size: 0.8rem;
+      }
+
+      .social-icons a {
+        width: 40px;
+        height: 40px;
+      }
+
+      .social-icons a img {
+        height: 20px;
+        width: 20px;
+      }
+
+      .nav-icon-btn .badge {
+        min-width: 18px;
+        height: 18px;
+        font-size: 0.55rem;
+        top: -3px;
+        right: -3px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding-left: 0.8rem;
+        padding-right: 0.8rem;
+      }
+
+      .main-container {
+        padding-top: 5.5rem;
+      }
+
+      .product-grid-suggestion {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+      }
+
+      .product-card-suggestion {
+        padding: 0.7rem 0.5rem 0.7rem;
+        border-radius: 14px;
+      }
+
+      .product-card-suggestion .pname {
+        font-size: 0.8rem;
+      }
+
+      .product-card-suggestion .pprice {
+        font-size: 0.9rem;
+      }
+
+      .footer-section {
+        padding: 1.8rem 1rem 1.2rem;
+        border-radius: 28px 28px 0 0;
+      }
+
+      .footer-grid {
+        gap: 1.5rem;
+      }
+
+      .footer-section h3 {
+        font-size: 1.1rem;
+      }
+
+      .rating-left .big-number {
+        font-size: 2rem;
+      }
+
+      .star-display {
+        font-size: 1.6rem;
+      }
+
+      .review-container {
+        padding: 1.2rem 0.8rem 1rem;
+        max-height: 380px;
+        border-radius: 20px;
+      }
+
+      .review-container .review-form-box input {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.75rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .review-container .star-picker .star {
+        font-size: 1.6rem !important;
+      }
+
+      .review-container .btn-send {
+        padding: 0.4rem 1.5rem !important;
+        font-size: 0.75rem;
+      }
+
+      .review-card {
+        padding: 0.5rem 0.8rem;
+        border-radius: 10px;
+      }
+
+      .review-card .review-stars {
+        font-size: 0.7rem;
+      }
+
+      .social-icons a {
+        width: 36px;
+        height: 36px;
+      }
+
+      .social-icons a img {
+        height: 18px;
+        width: 18px;
+      }
+
+      .badge-group img {
+        height: 30px;
+      }
+
+      .nav-icon-btn .badge {
+        min-width: 16px;
+        height: 16px;
+        font-size: 0.5rem;
+        top: -2px;
+        right: -2px;
+        padding: 0 3px;
+      }
+
+      .nav-icon-btn .badge-dot {
+        width: 8px;
+        height: 8px;
+        top: -1px;
+        right: -1px;
+      }
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
+    .floating {
+      animation: float 3s ease-in-out infinite;
+    }
+  </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-pink-navbar px-4 py-3" style="background-color: #E195AB;">
-        <div class="flex items-center justify-between">
-            <!-- Logo/Brand -->
-           <a href="#" class="text-white text-2xl font-irish-grover font-bold">Shinyshop</a>
-            
-            <!-- Search Bar -->
-            <div class="flex-1 max-w-sm mx-6">
-                <div class="relative">
-                    <input 
-                        type="text" 
-                        placeholder="Search" 
-                        class="w-full px-4 py-1.5 rounded-full text-white placeholder-white text-sm focus:outline-none"
-                        style="background-color: #B03052;"
-                    >
-                    <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-white">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" 
-                                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Right Icons -->
-            <div class="flex items-center space-x-4 flex-shrink-0">
-                <!-- Notification Bell -->
-                <button class="text-white hover:text-pink-100 transition-colors">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z" 
-                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M13.73 21C13.5542 21.3031 13.3019 21.5547 12.9982 21.7295C12.6946 21.9044 12.3504 21.9965 12 21.9965C11.6496 21.9965 11.3054 21.9044 11.0018 21.7295C10.6982 21.5547 10.4458 21.3031 10.27 21" 
-                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-                
-                <!-- Shopping Cart -->
-                <a href="ker.html" class="text-white hover:text-pink-100 transition-colors">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 22C9.55228 22 10 21.5523 10 21C10 20.4477 9.55228 20 9 20C8.44772 20 8 20.4477 8 21C8 21.5523 8.44772 22 9 22Z" 
-                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M20 22C20.5523 22 21 21.5523 21 21C21 20.4477 20.5523 20 20 20C19.4477 20 19 20.4477 19 21C19 21.5523 19.4477 22 20 22Z" 
-                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M1 1H5L7.68 14.39C7.77144 14.8504 8.02191 15.264 8.38755 15.5583C8.75318 15.8526 9.2107 16.009 9.68 16H19.4C19.8693 16.009 20.3268 15.8526 20.6925 15.5583C21.0581 15.264 21.3086 14.8504 21.4 14.39L23 6H6" 
-                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
-                
-                <!-- Profile Avatar -->
-                <div class="w-full lg:w-1/2 flex justify-center">
-                <a href="profile.html" class="block w-10 h-10 rounded-full overflow-hidden border-8" style="border-color: #E6B8C5;">
-                    <img src="/img/MODEL 1.png" alt="Contoh Gambar" class="w-full h-full object-cover" />
-                </a>
-            </div>
-            </div>
+
+  <!-- ===== NAVBAR - PINK TRANSPARAN ===== -->
+  <nav class="navbar-custom">
+    <div class="navbar-inner">
+      <a href="#" class="brand">Shinyshop</a>
+
+      <div class="search-wrap">
+        <input type="text" placeholder="Cari produk..." />
+      </div>
+
+      <div class="nav-icons">
+        <!-- NOTIFICATION - TANPA ANGKA, HANYA DOT -->
+        <button class="nav-icon-btn" aria-label="Notifications">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z"/>
+            <path d="M13.73 21C13.5542 21.3031 13.3019 21.5547 12.9982 21.7295C12.6946 21.9044 12.3504 21.9965 12 21.9965C11.6496 21.9965 11.3054 21.9044 11.0018 21.7295C10.6982 21.5547 10.4458 21.3031 10.27 21"/>
+          </svg>
+          <span class="badge-dot active"></span>
+        </button>
+
+        <!-- CART - DENGAN ANGKA -->
+        <a href="ker.html" class="nav-icon-btn" aria-label="Cart" id="cartLink">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 22C9.55228 22 10 21.5523 10 21C10 20.4477 9.55228 20 9 20C8.44772 20 8 20.4477 8 21C8 21.5523 8.44772 22 9 22Z"/>
+            <path d="M20 22C20.5523 22 21 21.5523 21 21C21 20.4477 20.5523 20 20 20C19.4477 20 19 20.4477 19 21C19 21.5523 19.4477 22 20 22Z"/>
+            <path d="M1 1H5L7.68 14.39C7.77144 14.8504 8.02191 15.264 8.38755 15.5583C8.75318 15.8526 9.2107 16.009 9.68 16H19.4C19.8693 16.009 20.3268 15.8526 20.6925 15.5583C21.0581 15.264 21.3086 14.8504 21.4 14.39L23 6H6"/>
+          </svg>
+          <span class="badge" id="cartBadge">0</span>
+        </a>
+
+        <a href="profile.html" class="avatar-wrapper">
+          <img src="/img/Giselle2.jpg" alt="profile" />
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="container main-container">
+
+    <!-- Floral Divider -->
+    <div class="floral-divider">
+      <span>✦</span>
+      <span>✧</span>
+      <span>✦</span>
+      <span>✧</span>
+      <span>✦</span>
+    </div>
+
+    <!-- Product Detail -->
+    <div id="productDetail" class="max-w-4xl mx-auto"></div>
+
+    <!-- Rating -->
+    <div class="rating-box max-w-2xl mx-auto">
+      <div class="flex flex-col md:flex-row gap-6 items-center">
+        <div class="rating-left flex flex-col items-center md:items-start">
+          <span class="big-number">5.0 <span class="text-base font-normal" style="color:#7a5a62;">dari 5</span></span>
+          <div class="star-display">
+            <span class="filled">★</span>
+            <span class="filled">★</span>
+            <span class="filled">★</span>
+            <span class="filled">★</span>
+            <span class="filled">★</span>
+          </div>
         </div>
-    </nav>
 
-
- <!--  container Api Detail Produk -->
-    <div class="pt-20">
-  <!-- Api Detail Produk -->
-  <div id="productDetail" class="max-w-4xl mx-auto bg-white rounded-xl shadow-md p-6 mt-6" style="background-color: #E3B7C4;"></div>
-</div>
-
-
-
- <!--  Rating -->
-  <div class="max-w-2xl mx-auto border-white p-6 bg-[#ca93a1] rounded mt-6">
-  <div class="flex flex-col md:flex-row">
-    <!-- Rating Kiri -->
-    <div class="w-full md:w-1/4 text-white flex flex-col items-center justify-center mb-4 md:mb-0">
-      <p class="text-4xl font-bold font-della-respira">5.0 <span class="text-lg font-normal">dari 5</span></p>
-      <div class="flex mt-2">
-        <span class="text-yellow-400 text-2xl">&#9733;</span>
-        <span class="text-yellow-400 text-2xl">&#9733;</span>
-        <span class="text-yellow-400 text-2xl">&#9733;</span>
-        <span class="text-yellow-400 text-2xl">&#9733;</span>
-        <span class="text-yellow-400 text-2xl">&#9733;</span>
+        <div class="flex-1 w-full space-y-2">
+          <div class="rating-bar-wrap">
+            <span>5</span>
+            <div class="rating-bar-track"><div class="rating-bar-fill" style="width:100%"></div></div>
+          </div>
+          <div class="rating-bar-wrap">
+            <span>4</span>
+            <div class="rating-bar-track"><div class="rating-bar-fill" style="width:80%"></div></div>
+          </div>
+          <div class="rating-bar-wrap">
+            <span>3</span>
+            <div class="rating-bar-track"><div class="rating-bar-fill" style="width:20%"></div></div>
+          </div>
+          <div class="rating-bar-wrap">
+            <span>2</span>
+            <div class="rating-bar-track"><div class="rating-bar-fill" style="width:10%"></div></div>
+          </div>
+          <div class="rating-bar-wrap">
+            <span>1</span>
+            <div class="rating-bar-track"><div class="rating-bar-fill" style="width:5%"></div></div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Bar Penilaian Kanan -->
-    <div class="w-full md:w-3/4 space-y-3">
-      <!-- Bintang 5 -->
-      <div class="flex items-center space-x-3">
-        <span class="text-white text-sm w-6">5</span>
-        <div class="w-full h-4 bg-gray-300 rounded">
-          <div class="h-4 bg-[#B03052] rounded" style="width: 100%;"></div>
+    <!-- Floral Divider -->
+    <div class="floral-divider">
+      <span>✦</span>
+      <span>✧</span>
+      <span>✦</span>
+      <span>✧</span>
+      <span>✦</span>
+    </div>
+
+    <!-- ===== REVIEW CONTAINER ===== -->
+    <div class="review-container max-w-2xl mx-auto">
+      <!-- Form Tambah Ulasan -->
+      <div id="daftar-ulasan" class="review-form-box">
+        <input id="input-nama" type="text" placeholder="Nama Pengguna" />
+        <input id="input-ulasan" type="text" placeholder="Tambahkan Ulasan..." />
+
+        <div class="flex items-center justify-center space-x-1 star-picker" id="rating-stars">
+          <span class="star" data-value="1">★</span>
+          <span class="star" data-value="2">★</span>
+          <span class="star" data-value="3">★</span>
+          <span class="star" data-value="4">★</span>
+          <span class="star" data-value="5">★</span>
+        </div>
+        <input type="hidden" id="rating-value" value="0" />
+
+        <div class="text-center mt-2">
+          <button onclick="tambahUlasan()" class="btn-send">✧ Kirim Ulasan ✧</button>
         </div>
       </div>
-      <!-- Bintang 4 -->
-      <div class="flex items-center space-x-3">
-        <span class="text-white text-sm w-6">4</span>
-        <div class="w-full h-4 bg-gray-300 rounded">
-          <div class="h-4 bg-[#B03052] rounded" style="width: 80%;"></div>
+
+      <!-- Daftar Ulasan -->
+      <div id="daftar-ulasan-container"></div>
+    </div>
+
+    <!-- Floral Divider -->
+    <div class="floral-divider">
+      <span>✧</span>
+      <span>✦</span>
+      <span>✧</span>
+      <span>✦</span>
+      <span>✧</span>
+    </div>
+
+    <!-- Suggestion Products -->
+    <div class="max-w-6xl mx-auto mt-4" style="width:100%;">
+      <h2 class="section-title">sweet choice</h2>
+      <p class="section-subtitle">— find your favorite collection —</p>
+      <div id="product-container" class="product-grid-suggestion"></div>
+    </div>
+
+  </main>
+
+  <!-- ===== FOOTER - PINK GRADIENT ===== -->
+  <footer class="footer-section">
+    <div class="footer-grid">
+      <div>
+        <h3>🩰 Pelayanan</h3>
+        <ul>
+          <li><a href="#">Bantuan</a></li>
+          <li><a href="#">Metode Pembayaran</a></li>
+          <li><a href="#">Detail Produk</a></li>
+          <li><a href="#">Lokasi</a></li>
+          <li><a href="#">Lacak pesanan</a></li>
+          <li><a href="#">Garansi</a></li>
+          <li><a href="#">Hubungi Shinyshop</a></li>
+        </ul>
+        <div class="badge-group">
+          <a href="#"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" /></a>
+          <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" /></a>
         </div>
       </div>
-      <!-- Bintang 3 -->
-      <div class="flex items-center space-x-3">
-        <span class="text-white text-sm w-6">3</span>
-        <div class="w-full h-4 bg-gray-300 rounded">
-          <div class="h-4 bg-[#B03052] rounded" style="width: 20%;"></div>
-        </div>
+
+      <div>
+        <h3>🎀 Tentang Shinyshop</h3>
+        <ul>
+          <li><a href="#">Privasi</a></li>
+          <li><a href="#">Kebijakan</a></li>
+          <li><a href="#">Artikel</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Karir</a></li>
+        </ul>
       </div>
-      <!-- Bintang 2 -->
-      <div class="flex items-center space-x-3">
-        <span class="text-white text-sm w-6">2</span>
-        <div class="w-full h-4 bg-gray-300 rounded">
-          <div class="h-4 bg-[#B03052] rounded" style="width: 10%;"></div>
-        </div>
-      </div>
-      <!-- Bintang 1 -->
-      <div class="flex items-center space-x-3">
-        <span class="text-white text-sm w-6">1</span>
-        <div class="w-full h-4 bg-gray-300 rounded">
-          <div class="h-4 bg-[#B03052] rounded" style="width: 5%;"></div>
+
+      <div>
+        <h3>🌸 Contact</h3>
+        <ul>
+          <li><a href="#">ssarahchannel@gmail.com</a></li>
+          <li><a href="#">+0881025387767</a></li>
+          <li><a href="#">@shynyshoping</a></li>
+        </ul>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/userr.sararr/" aria-label="Instagram">
+            <img src="/img/instagram.png" alt="Instagram" />
+          </a>
+          <a href="mailto:ssrahchannel@gmail.com" aria-label="Google">
+            <img src="/img/google.png" alt="Google" />
+          </a>
+          <a href="https://github.com/sarahaull" target="_blank" aria-label="Github">
+             <img src="/img/github.png" alt="Github" />
+          </a>
+          <a href="+62 810-2538-7767" aria-label="WhatsApp">
+            <img src="/img/whatsapp.png" alt="WhatsApp" />
+          </a>
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </footer>
 
-    
-     
-    
+  <!-- ===== SCRIPTS ===== -->
+  <script defer src="script.js"></script>
+  <script>
+    // ===== UPDATE CART BADGE =====
+    function updateCartBadge() {
+        const cartBadge = document.getElementById('cartBadge');
+        if (!cartBadge) return;
+        
+        // Ambil data dari localStorage
+        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        let checkoutItems = JSON.parse(localStorage.getItem('checkoutItems')) || [];
+        
+        // Hitung total quantity dari kedua sumber
+        let totalItems = 0;
+        
+        cartItems.forEach(item => {
+            totalItems += (item.quantity || 1);
+        });
+        
+        checkoutItems.forEach(item => {
+            totalItems += (item.quantity || 1);
+        });
+        
+        // Tampilkan badge
+        if (totalItems > 0) {
+            cartBadge.textContent = totalItems;
+            cartBadge.style.display = 'flex';
+            // Animasi pulse
+            cartBadge.classList.remove('pulse');
+            void cartBadge.offsetWidth; // trigger reflow
+            cartBadge.classList.add('pulse');
+        } else {
+            cartBadge.textContent = '0';
+            cartBadge.style.display = 'flex';
+        }
+    }
 
+    // ===== ULASAN =====
 
+    // Data ulasan awal
+    const ulasanDefault = [
+      { id: 1, nama: 'sintomah g', ulasan: 'Baru saja', rating: 5, waktu: '2 menit yang lalu' },
+      { id: 2, nama: 'bvh', ulasan: 'bbbv', rating: 4, waktu: '5 menit yang lalu' },
+      { id: 3, nama: 'vv v vcvc', ulasan: 'Baru saja', rating: 3, waktu: '10 menit yang lalu' },
+      { id: 4, nama: 'kio', ulasan: 'minul', rating: 5, waktu: '15 menit yang lalu' },
+      { id: 5, nama: 'ytta', ulasan: 'cihuy', rating: 4, waktu: '20 menit yang lalu' }
+    ];
 
+    // Fungsi untuk menambahkan ulasan baru
+    function tambahUlasan() {
+      const namaInput = document.getElementById('input-nama');
+      const ulasanInput = document.getElementById('input-ulasan');
+      const ratingValue = parseInt(document.getElementById('rating-value').value);
 
+      const nama = namaInput.value.trim();
+      const ulasan = ulasanInput.value.trim();
 
-<!-- Review Header -->
- 
- <!-- Form Tambah Ulasan -->
-  <div id="daftar-ulasan" class="max-w-2xl mx-auto mt-6 bg-white p-6 rounded-xl shadow-md space-y-4">
+      if (nama === '' || ulasan === '') {
+        alert('Mohon isi nama dan ulasan terlebih dahulu.');
+        return;
+      }
 
-    
-    <!-- Input Nama -->
-    <input 
-      id="input-nama"
-      type="text" 
-      placeholder="Nama Pengguna" 
-      class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#f7f2f3] placeholder-gray-400 text-sm" />
-      
-    <!-- Input Ulasan -->
-    <input 
-      id="input-ulasan"
-      type="text" 
-      placeholder="Tambahkan Ulasan..." 
-      class="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#f7f2f3] placeholder-gray-400 text-sm" />
+      if (ratingValue === 0) {
+        alert('Mohon beri rating bintang terlebih dahulu.');
+        return;
+      }
 
-    <!-- Pilih Rating -->
-    <div class="flex items-center space-x-1" id="rating-stars">
-      <span class="star text-2xl cursor-pointer text-gray-300" data-value="1">★</span>
-      <span class="star text-2xl cursor-pointer text-gray-300" data-value="2">★</span>
-      <span class="star text-2xl cursor-pointer text-gray-300" data-value="3">★</span>
-      <span class="star text-2xl cursor-pointer text-gray-300" data-value="4">★</span>
-      <span class="star text-2xl cursor-pointer text-gray-300" data-value="5">★</span>
-    </div>
-    <input  type="hidden" id="rating-value"  value="0" />
+      const dataUlasan = {
+        id: Date.now(),
+        nama: nama,
+        ulasan: ulasan,
+        rating: ratingValue,
+        waktu: 'Baru saja'
+      };
 
-    <!-- Tombol Kirim -->
-    <button 
-      onclick="tambahUlasan()" 
-      class="bg-[#E195AB] text-white px-10 py-3 rounded-full font-semibold block mx-auto hover:bg-[#B03052] transition cursor-pointer mr-6 ">
-      Kirim
-    </button>
-  </div>
-</div>
-    
+      tampilkanSatuUlasan(dataUlasan);
 
- <!-- saran produk -->
-  <div class="max-w-6xl mx-auto px-4 mt-6">
-      <div id="product-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+      namaInput.value = '';
+      ulasanInput.value = '';
+      document.getElementById('rating-value').value = 0;
 
-  </div>
- 
+      document.querySelectorAll('#rating-stars .star').forEach(s => {
+        s.classList.remove('active');
+      });
 
+      // Scroll ke atas untuk melihat ulasan baru
+      const container = document.getElementById('daftar-ulasan-container');
+      setTimeout(() => {
+        container.scrollTop = 0;
+      }, 100);
+    }
 
+    // Fungsi untuk menampilkan satu ulasan
+    function tampilkanSatuUlasan({ nama, ulasan, rating, id, waktu }) {
+      const daftarUlasanContainer = document.getElementById('daftar-ulasan-container');
 
-<!-- Footer Section -->
-    <footer class="footer-section text-white mt-12  ">
-        <div class="container mx-auto px-4 py-8 max-w-6xl">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Contact Information -->
-                <div class="space-y-3">
-                    <h3 class="text-2xl font-semibold mb-4">Pelayanan</h3>
-                    <p>Bantuan</p>
-                    <p>Metode Pembayaran</p>
-                    <p>Detail Produk </p>
-                    <p>Lokasi</p>
-                    <p>Lacak pesanan </p>
-                    <p>Garansi </p>
-                    <p>Hubungi ShinyShop</p>
-                    
-                   <div class="flex justify-center items-center space-x-4 mt-6 mr-30">
-                    <a href="#" class="block">
-                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" class="h-8">
-                    </a>
-                    <a href="#" class="block">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="h-8"></a>
-                    </div>
-                </div>
-                
-                <!-- Company Links - Column 1 -->
-                <div>
-                    <h3 class="text-2xl font-semibold mb-4">Tentang Shinyshop</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:underline">Privasi</a></li>
-                        <li><a href="#" class="hover:underline">Kebijakan </a></li>
-                           <li><a href="#" class="hover:underline">Artikel</a></li>
-                              <li><a href="#" class="hover:underline">Blog</a></li>
-                                 <li><a href="#" class="hover:underline">Karir</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Company Links - Column 2 -->
-                <div>
-                    <h3 class="text-2xl font-semibold mb-4">Contact</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:underline">ssarahchannel@gmail.com</a></li>
-                        <li><a href="#" class="hover:underline">+0881025387767</a></li>
-                        <li><a href="#" class="hover:underline">@shynyshoping</a></li>
-                    </ul>
-                    
-                    <!-- Social Media Links -->
-                    <div class="flex space-x-4 mt-8">
-                        <a href="#" class="block text-2xl hover:text-pink-200 transition-colors">
-                            <img src="/img/instagram.png" alt="ig" class="h-7 w-7">
-                        </a>
-                        <a href="#" class="block text-2xl hover:text-pink-200 transition-colors">
-                            <img src="/img/google.png" alt="google" class="h-7 w-7">
-                        </a>
-                        <a href="#" class="block text-2xl hover:text-pink-200 transition-colors">
-                            <img src="/img/facebook-app-symbol.png" alt="fb" class="h-7 w-7">
-                        </a>
-                        <a href="#" class="block text-2xl hover:text-pink-200 transition-colors">
-                            <img src="/img/whatsapp.png" alt="wa" class="h-7 w-7">
-                        </a>
-                    </div>
-                </div>
-            </div>
+      const ulasanBaru = document.createElement('div');
+      ulasanBaru.className = 'review-card';
+
+      // Generate bintang dengan warna kuning untuk yang terisi
+      let bintangHTML = '';
+      for (let i = 1; i <= 5; i++) {
+        if (i <= rating) {
+          bintangHTML += '<span class="star-filled">★</span>';
+        } else {
+          bintangHTML += '<span class="star-empty">★</span>';
+        }
+      }
+
+      ulasanBaru.innerHTML = `
+        <div class="review-header">
+          <span class="review-name">${nama}</span>
+          <span class="review-stars">${bintangHTML}</span>
         </div>
-    </footer>
+        <p class="review-text">${ulasan}</p>
+        <span class="review-date">${waktu || 'Baru saja'}</span>
+      `;
+
+      daftarUlasanContainer.prepend(ulasanBaru);
+    }
+
+    // ===== LISTENER STORAGE =====
+    window.addEventListener('storage', function(e) {
+      if (e.key === 'cartItems' || e.key === 'checkoutItems') {
+        updateCartBadge();
+      }
+    });
+
+    // ===== INIT =====
+    document.addEventListener('DOMContentLoaded', () => {
+      // Update badge keranjang
+      updateCartBadge();
+
+      // Update badge setiap 2 detik (jika ada perubahan dari tab lain)
+      setInterval(updateCartBadge, 2000);
+
+      // Tampilkan ulasan default
+      ulasanDefault.forEach(ulasan => {
+        tampilkanSatuUlasan(ulasan);
+      });
+
+      // Event untuk klik bintang rating
+      document.querySelectorAll('#rating-stars .star').forEach(star => {
+        star.addEventListener('click', function() {
+          const rating = parseInt(this.getAttribute('data-value'));
+          document.getElementById('rating-value').value = rating;
+
+          document.querySelectorAll('#rating-stars .star').forEach(s => {
+            const val = parseInt(s.getAttribute('data-value'));
+            if (val <= rating) {
+              s.classList.add('active');
+            } else {
+              s.classList.remove('active');
+            }
+          });
+        });
+      });
+    });
+  </script>
 </body>
 </html>
-

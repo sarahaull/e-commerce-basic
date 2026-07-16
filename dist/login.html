@@ -3,129 +3,1165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link href="style.css" rel="stylesheet">
+    <title>Login · Coquette</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&family=Irish+Grover&family=Forum&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
+        /* ============================================================
+                   RESET & BASE
+                ============================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        .login-container {
-            background-color: rgba(219, 144, 159, 0.85);
-            border-radius: 16px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .back-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            color: white;
-            cursor: pointer;
-        }
-        .input-field {
-            background-color: rgba(255, 255, 255, 0.8);
-            border: none;
-            border-radius: 8px;
-        }
-        .login-button {
-            background-color: #A35167;
-            transition: background-color 0.3s;
-        }
-        .login-button:hover {
-            background-color: #923e4f;
-        }
-        .social-icon {
-            border: 1px solid white;
-            border-radius: 8px;
-            padding: 8px;
-            transition: transform 0.2s;
-        }
-        .social-icon:hover {
-            transform: scale(1.05);
-        }
-        .divider {
+        body {
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            color: white;
+            justify-content: center;
+            padding: 1.5rem;
+            font-family: 'Poppins', sans-serif;
+            background: #fbf6f0;
+            position: relative;
+            overflow: hidden;
         }
-        .divider-line {
-            flex-grow: 1;
+
+        /* ============================================================
+                   ANIMATED BACKGROUND - COQUETTE (VISIBLE)
+                ============================================================ */
+        .bg-coquette {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background: linear-gradient(135deg, #fce4ec 0%, #fdf0f3 30%, #fff5f7 60%, #fce4ec 100%);
+            overflow: hidden;
+        }
+
+        /* Bubbles - Lebih Terlihat */
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), rgba(215,108,130,0.08));
+            border: 1.5px solid rgba(215,108,130,0.12);
+            animation: bubbleFloat 15s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .b1 { width: 80px; height: 80px; top: 10%; left: 5%; animation-delay: 0s; }
+        .b2 { width: 50px; height: 50px; top: 20%; right: 10%; animation-delay: 3s; }
+        .b3 { width: 100px; height: 100px; bottom: 15%; left: 8%; animation-delay: 6s; }
+        .b4 { width: 60px; height: 60px; bottom: 25%; right: 5%; animation-delay: 9s; }
+        .b5 { width: 40px; height: 40px; top: 50%; left: 3%; animation-delay: 2s; }
+        .b6 { width: 70px; height: 70px; top: 45%; right: 3%; animation-delay: 5s; }
+
+        @keyframes bubbleFloat {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+            25% { transform: translate(40px, -60px) scale(1.1); opacity: 0.6; }
+            50% { transform: translate(-30px, -100px) scale(0.9); opacity: 0.3; }
+            75% { transform: translate(50px, -50px) scale(1.2); opacity: 0.7; }
+            100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+        }
+
+        /* Floating Elements - Lebih Terlihat */
+        .floating-element {
+            position: absolute;
+            font-size: 2.8rem;
+            opacity: 0.15;
+            animation: floatAround 20s ease-in-out infinite;
+            pointer-events: none;
+            color: #b34b6a;
+        }
+
+        .fe1 { top: 8%; left: 5%; font-size: 3.8rem; animation-delay: 0s; }
+        .fe2 { top: 12%; right: 6%; font-size: 3rem; animation-delay: 3s; }
+        .fe3 { bottom: 15%; left: 4%; font-size: 3.2rem; animation-delay: 6s; }
+        .fe4 { bottom: 10%; right: 5%; font-size: 4.2rem; animation-delay: 9s; }
+        .fe5 { top: 45%; left: 2%; font-size: 2.2rem; animation-delay: 12s; }
+        .fe6 { top: 40%; right: 2%; font-size: 2.5rem; animation-delay: 15s; }
+
+        @keyframes floatAround {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            25% { transform: translate(30px, -40px) rotate(8deg) scale(1.05); }
+            50% { transform: translate(-20px, -60px) rotate(-5deg) scale(0.95); }
+            75% { transform: translate(40px, -30px) rotate(12deg) scale(1.08); }
+            100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+        }
+
+        /* Floating Hearts - Lebih Terlihat */
+        .floating-heart {
+            position: absolute;
+            color: #d76c82;
+            opacity: 0.12;
+            animation: floatHeart 8s ease-in-out infinite;
+            pointer-events: none;
+            font-size: 3rem;
+        }
+
+        .fh1 { top: 5%; left: 20%; animation-delay: 0s; font-size: 3.5rem; }
+        .fh2 { top: 30%; right: 12%; animation-delay: 2.5s; font-size: 2.5rem; }
+        .fh3 { bottom: 30%; left: 22%; animation-delay: 5s; font-size: 3rem; }
+        .fh4 { bottom: 6%; right: 20%; animation-delay: 7s; font-size: 2.8rem; }
+
+        @keyframes floatHeart {
+            0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.08; }
+            50% { transform: translateY(-50px) rotate(15deg) scale(1.2); opacity: 0.2; }
+            100% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.08; }
+        }
+
+        /* Sparkle Particles - Lebih Terlihat */
+        .sparkle-particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: sparklePulse 3s ease-in-out infinite;
+            pointer-events: none;
+            background: #d76c82;
+            box-shadow: 0 0 10px rgba(215,108,130,0.3);
+        }
+
+        .sp1 { top: 10%; left: 18%; width: 8px; height: 8px; animation-delay: 0s; }
+        .sp2 { top: 22%; right: 18%; width: 6px; height: 6px; animation-delay: 1s; }
+        .sp3 { bottom: 25%; left: 12%; width: 10px; height: 10px; animation-delay: 2s; }
+        .sp4 { bottom: 12%; right: 15%; width: 6px; height: 6px; animation-delay: 1.5s; }
+        .sp5 { top: 50%; left: 5%; width: 5px; height: 5px; animation-delay: 2.5s; }
+        .sp6 { top: 50%; right: 6%; width: 8px; height: 8px; animation-delay: 0.5s; }
+
+        @keyframes sparklePulse {
+            0% { opacity: 0; transform: scale(0); }
+            50% { opacity: 0.8; transform: scale(1.5); box-shadow: 0 0 20px rgba(215,108,130,0.5); }
+            100% { opacity: 0; transform: scale(0); }
+        }
+
+        /* Ribbon decoration - Lebih Terlihat */
+        .ribbon-deco {
+            position: absolute;
+            width: 120px;
+            opacity: 0.1;
+            pointer-events: none;
+            animation: ribbonFloat 12s ease-in-out infinite;
+            filter: drop-shadow(0 4px 20px rgba(215,108,130,0.1));
+        }
+
+        .rd1 { top: 6%; right: 8%; transform: rotate(25deg); animation-delay: 0s; }
+        .rd2 { bottom: 8%; left: 6%; transform: rotate(-20deg); animation-delay: 4s; }
+
+        @keyframes ribbonFloat {
+            0% { transform: translateY(0) rotate(25deg) scale(1); }
+            50% { transform: translateY(-25px) rotate(30deg) scale(1.05); }
+            100% { transform: translateY(0) rotate(25deg) scale(1); }
+        }
+
+        /* Falling Petals - Lebih Terlihat */
+        .petal {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.12;
+            animation: petalFall 12s linear infinite;
+            pointer-events: none;
+            filter: drop-shadow(0 4px 8px rgba(215,108,130,0.1));
+        }
+
+        .p1 { left: 10%; animation-delay: 0s; font-size: 2.5rem; }
+        .p2 { left: 25%; animation-delay: 3s; font-size: 2rem; }
+        .p3 { left: 40%; animation-delay: 6s; font-size: 2.8rem; }
+        .p4 { left: 55%; animation-delay: 9s; font-size: 2rem; }
+        .p5 { left: 70%; animation-delay: 2s; font-size: 2.5rem; }
+        .p6 { left: 85%; animation-delay: 5s; font-size: 2.2rem; }
+
+        @keyframes petalFall {
+            0% { transform: translateY(-100px) rotate(0deg) scale(0.8); opacity: 0; }
+            10% { opacity: 0.12; }
+            90% { opacity: 0.12; }
+            100% { transform: translateY(calc(100vh + 100px)) rotate(720deg) scale(1.2); opacity: 0; }
+        }
+
+        /* ============================================================
+                   LOGIN CARD - COQUETTE
+                ============================================================ */
+        .login-wrapper {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 380px;
+            animation: cardAppear 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes cardAppear {
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.92) rotate(-2deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1) rotate(0deg);
+            }
+        }
+
+        .login-card {
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 2.5rem;
+            padding: 2rem 1.8rem;
+            box-shadow: 
+                0 30px 80px rgba(176, 48, 82, 0.12),
+                0 8px 32px rgba(176, 48, 82, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.7),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .login-card:hover {
+            box-shadow: 
+                0 35px 90px rgba(176, 48, 82, 0.18),
+                0 10px 40px rgba(176, 48, 82, 0.08);
+            transform: translateY(-3px);
+        }
+
+        /* Card Glow Animation */
+        .login-card::before {
+            content: "";
+            position: absolute;
+            top: -70px;
+            right: -70px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, #fce4ec 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0.35;
+            pointer-events: none;
+            animation: glowPulse 4s ease-in-out infinite;
+        }
+
+        .login-card::after {
+            content: "";
+            position: absolute;
+            bottom: -60px;
+            left: -60px;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, #f8d7e0 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0.3;
+            pointer-events: none;
+            animation: glowPulse 4s ease-in-out infinite 2s;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.3); opacity: 0.5; }
+        }
+
+        /* Decorative corners */
+        .corner-deco {
+            position: absolute;
+            font-size: 1.4rem;
+            color: #dbb1b0;
+            opacity: 0.2;
+            pointer-events: none;
+            animation: cornerSpin 6s linear infinite;
+        }
+
+        .cd1 { top: 12px; left: 16px; }
+        .cd2 { top: 12px; right: 16px; transform: rotate(90deg); }
+        .cd3 { bottom: 12px; left: 16px; transform: rotate(-90deg); }
+        .cd4 { bottom: 12px; right: 16px; transform: rotate(180deg); }
+
+        @keyframes cornerSpin {
+            0% { opacity: 0.15; }
+            50% { opacity: 0.3; }
+            100% { opacity: 0.15; }
+        }
+
+        /* ============================================================
+                   BACK BUTTON
+                ============================================================ */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            color: #7d3b54;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(4px);
+            margin-bottom: 0.8rem;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .back-btn::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #fce4ec, #f8d7e0);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .back-btn:hover::before {
+            opacity: 1;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateX(-5px) scale(1.05);
+            box-shadow: 0 4px 20px rgba(176, 48, 82, 0.12);
+        }
+
+        .back-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* ============================================================
+                   TITLE
+                ============================================================ */
+        .login-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #7d3b54;
+            text-align: center;
+            margin-bottom: 0.2rem;
+            animation: titleGlow 3s ease-in-out infinite;
+            letter-spacing: 0.5px;
+        }
+
+        .login-title::after {
+            content: ' ♡';
+            color: #d76c82;
+            font-size: 1.2rem;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { text-shadow: 0 0 0 rgba(215, 108, 130, 0); }
+            50% { text-shadow: 0 0 30px rgba(215, 108, 130, 0.08), 0 0 60px rgba(215, 108, 130, 0.04); }
+        }
+
+        .login-subtitle {
+            text-align: center;
+            color: #b28a96;
+            font-size: 0.75rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            font-family: 'Dancing Script', cursive;
+            letter-spacing: 0.5px;
+        }
+
+        .login-subtitle span {
+            font-size: 0.9rem;
+            display: inline-block;
+            animation: sparkleText 2s ease-in-out infinite;
+        }
+
+        .login-subtitle span:first-child {
+            animation-delay: 0s;
+        }
+        .login-subtitle span:last-child {
+            animation-delay: 1s;
+        }
+
+        @keyframes sparkleText {
+            0%, 100% { opacity: 0.4; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        /* ============================================================
+                   FORM
+                ============================================================ */
+        .form-group {
+            margin-bottom: 0.9rem;
+            animation: slideUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .form-group:nth-child(1) { animation-delay: 0.1s; }
+        .form-group:nth-child(2) { animation-delay: 0.2s; }
+
+        @keyframes slideUp {
+            0% { opacity: 0; transform: translateY(12px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.65rem;
+            font-weight: 500;
+            color: #7d3b54;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 0.3rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-group label i {
+            margin-right: 4px;
+            color: #d76c82;
+            font-size: 0.6rem;
+        }
+
+        .input-coquette {
+            width: 100%;
+            padding: 0.7rem 1.2rem;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1.5px solid rgba(225, 149, 171, 0.12);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: #2c1e1f;
+            transition: all 0.3s ease;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+            backdrop-filter: blur(4px);
+        }
+
+        .input-coquette:focus {
+            border-color: #d76c82;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 0 4px rgba(215, 108, 130, 0.06), 0 4px 20px rgba(215, 108, 130, 0.04);
+            transform: scale(1.01);
+        }
+
+        .input-coquette::placeholder {
+            color: #c4a8b0;
+            font-weight: 300;
+            font-size: 0.8rem;
+            font-style: italic;
+        }
+
+        .input-coquette.error {
+            border-color: #d32f2f !important;
+            box-shadow: 0 0 0 4px rgba(211, 47, 47, 0.06) !important;
+        }
+
+        .input-coquette.success {
+            border-color: #4CAF50 !important;
+            box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.06) !important;
+        }
+
+        /* ============================================================
+                   LINKS
+                ============================================================ */
+        .links-row {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-top: 0.1rem;
+            animation: slideUp 0.6s ease forwards 0.3s;
+            opacity: 0;
+        }
+
+        .links-row a {
+            color: #b28a96;
+            font-size: 0.7rem;
+            font-style: italic;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .links-row a:hover {
+            color: #b34b6a;
+            border-bottom-color: #b34b6a;
+            transform: translateX(2px);
+        }
+
+        /* ============================================================
+                   LOGIN BUTTON
+                ============================================================ */
+        .btn-login {
+            width: 100%;
+            padding: 0.75rem;
+            background: linear-gradient(145deg, #c03a5e, #a2294a);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 20px rgba(176, 48, 82, 0.20);
+            position: relative;
+            overflow: hidden;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 0.2rem;
+            animation: slideUp 0.6s ease forwards 0.4s;
+            opacity: 0;
+        }
+
+        .btn-login::before {
+            content: "✦";
+            margin-right: 6px;
+            font-size: 0.7rem;
+            display: inline-block;
+            animation: sparkleBtn 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkleBtn {
+            0%, 100% { transform: scale(0.8); opacity: 0.6; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+
+        .btn-login::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 60%);
+            transform: scale(0);
+            transition: transform 0.6s ease;
+            pointer-events: none;
+        }
+
+        .btn-login:hover::after {
+            transform: scale(1);
+        }
+
+        .btn-login:hover {
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 8px 35px rgba(176, 48, 82, 0.35);
+            background: linear-gradient(145deg, #a2294a, #8f2642);
+        }
+
+        .btn-login:active {
+            transform: scale(0.96);
+        }
+
+        .btn-login.loading {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .btn-login .spinner {
+            display: none;
+            width: 18px;
+            height: 18px;
+            border: 3px solid rgba(255,255,255,0.2);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            margin: 0 auto;
+        }
+
+        .btn-login.loading .spinner {
+            display: inline-block;
+        }
+
+        .btn-login.loading .btn-text {
+            display: none;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ============================================================
+                   DIVIDER
+                ============================================================ */
+        .divider-coquette {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin: 1.2rem 0 1rem;
+            color: #b28a96;
+            font-size: 0.7rem;
+            font-family: 'Forum', serif;
+            letter-spacing: 0.3px;
+            animation: slideUp 0.6s ease forwards 0.5s;
+            opacity: 0;
+        }
+
+        .divider-coquette .line {
+            flex: 1;
             height: 1px;
-            background-color: white;
+            background: linear-gradient(to right, transparent, #e6cccb, transparent);
+        }
+
+        .divider-coquette .diamond {
+            color: #dbb1b0;
+            font-size: 0.7rem;
+            animation: rotateDiamond 4s linear infinite;
+        }
+
+        @keyframes rotateDiamond {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ============================================================
+                   SOCIAL ICONS
+                ============================================================ */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            animation: slideUp 0.6s ease forwards 0.6s;
+            opacity: 0;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: 1.5px solid rgba(225, 149, 171, 0.1);
+            transition: all 0.4s ease;
+            text-decoration: none;
+            backdrop-filter: blur(4px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, rgba(215, 108, 130, 0.08) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .social-icon:hover::before {
+            opacity: 1;
+        }
+
+        .social-icon::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #fce4ec, #f8d7e0);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .social-icon:hover::after {
+            opacity: 1;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.08);
+            background: white;
+            border-color: #d76c82;
+            box-shadow: 0 6px 28px rgba(215, 108, 130, 0.12);
+        }
+
+        .social-icon img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-icon i {
+            font-size: 1.2rem;
+            color: #7d3b54;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ============================================================
+                   GOOGLE PLAY BADGE
+                ============================================================ */
+        .play-badge {
+            display: flex;
+            justify-content: center;
+            margin-top: 0.8rem;
+            animation: slideUp 0.6s ease forwards 0.7s;
+            opacity: 0;
+        }
+
+        .play-badge img {
+            height: 36px;
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.03));
+        }
+
+        .play-badge img:hover {
+            transform: scale(1.06) translateY(-3px);
+            filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.06));
+        }
+
+        /* ============================================================
+                   TOAST NOTIFICATION
+                ============================================================ */
+        .toast-login {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            padding: 16px 28px;
+            border-radius: 16px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            z-index: 99999;
+            opacity: 0;
+            transform: translateX(50px) scale(0.9);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 12px 48px rgba(0,0,0,0.08);
+            max-width: 380px;
+            pointer-events: none;
+        }
+
+        .toast-login.show {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            pointer-events: auto;
+        }
+
+        .toast-login.success {
+            background: rgba(46, 125, 50, 0.12);
+            border: 1px solid rgba(46, 125, 50, 0.15);
+            color: #1e5a2a;
+        }
+
+        .toast-login.error {
+            background: rgba(211, 47, 47, 0.10);
+            border: 1px solid rgba(211, 47, 47, 0.12);
+            color: #8f2a2a;
+        }
+
+        .toast-login .toast-icon {
+            font-size: 1.4rem;
+            margin-right: 10px;
+            display: inline-block;
+            animation: toastPop 0.5s ease;
+        }
+
+        @keyframes toastPop {
+            0% { transform: scale(0); }
+            70% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+
+        /* ============================================================
+                   FOOTER TEXT
+                ============================================================ */
+        .coquette-footer-text {
+            text-align: center;
+            margin-top: 0.8rem;
+            font-family: 'Dancing Script', cursive;
+            color: #b28a96;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            letter-spacing: 0.5px;
+            animation: footerPulse 3s ease-in-out infinite;
+        }
+
+        .coquette-footer-text span {
+            margin: 0 3px;
+            display: inline-block;
+            animation: heartBeat 2s ease-in-out infinite;
+        }
+
+        .coquette-footer-text span:first-child { animation-delay: 0s; }
+        .coquette-footer-text span:last-child { animation-delay: 1s; }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); opacity: 0.4; }
+            50% { transform: scale(1.3); opacity: 1; }
+        }
+
+        @keyframes footerPulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.7; }
+        }
+
+        /* ============================================================
+                   RESPONSIVE
+                ============================================================ */
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 1.5rem 1.2rem;
+                border-radius: 1.8rem;
+            }
+
+            .login-title {
+                font-size: 1.4rem;
+            }
+
+            .login-subtitle {
+                font-size: 0.7rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .bubble, .floating-element, .floating-heart, .ribbon-deco, .petal {
+                display: none;
+            }
+
+            .sparkle-particle {
+                display: none;
+            }
+
+            .social-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .social-icon img {
+                width: 17px;
+                height: 17px;
+            }
+
+            .social-icon i {
+                font-size: 1rem;
+            }
+
+            .btn-login {
+                padding: 0.65rem;
+                font-size: 0.8rem;
+            }
+
+            .back-btn {
+                width: 36px;
+                height: 36px;
+            }
+
+            .back-btn svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            .input-coquette {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .play-badge img {
+                height: 30px;
+            }
+
+            .login-wrapper {
+                animation: cardAppear 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            }
+
+            .corner-deco {
+                display: none;
+            }
+
+            .toast-login {
+                top: 16px;
+                right: 16px;
+                left: 16px;
+                font-size: 0.75rem;
+                padding: 12px 18px;
+                border-radius: 12px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .login-card {
+                padding: 1.2rem 1rem;
+                border-radius: 1.5rem;
+            }
+
+            .login-title {
+                font-size: 1.2rem;
+            }
+
+            .links-row a {
+                font-size: 0.6rem;
+            }
+
+            .divider-coquette {
+                font-size: 0.6rem;
+                gap: 0.5rem;
+                margin: 1rem 0 0.8rem;
+            }
+
+            .social-icon {
+                width: 36px;
+                height: 36px;
+            }
+
+            .social-icon img {
+                width: 15px;
+                height: 15px;
+            }
+
+            .social-icon i {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4" style="background-image: url(/img/download\ \(6\).jpg);">
-    <div class="w-full max-w-md relative">
-        <!-- Back Button -->
-        <div class="back-button">
-            <a href="coba.html" class="back-button">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-            </svg>
-        </a>
-        </div>
+<body>
 
-        <!-- Login Container -->
-        <div class="login-container p-8 bg-[#D08599] br-16px">
+    <!-- ============================================================
+    ANIMATED BACKGROUND - COQUETTE
+    ============================================================ -->
+    <div class="bg-coquette">
+        <!-- Bubbles -->
+        <div class="bubble b1"></div>
+        <div class="bubble b2"></div>
+        <div class="bubble b3"></div>
+        <div class="bubble b4"></div>
+        <div class="bubble b5"></div>
+        <div class="bubble b6"></div>
+
+        <!-- Floating Elements -->
+        <span class="floating-element fe1">✧</span>
+        <span class="floating-element fe2">✦</span>
+        <span class="floating-element fe3">✧</span>
+        <span class="floating-element fe4">✦</span>
+        <span class="floating-element fe5">♡</span>
+        <span class="floating-element fe6">♥</span>
+
+        <!-- Floating Hearts -->
+        <span class="floating-heart fh1">♡</span>
+        <span class="floating-heart fh2">♥</span>
+        <span class="floating-heart fh3">♡</span>
+        <span class="floating-heart fh4">♥</span>
+
+        <!-- Sparkle Particles -->
+        <div class="sparkle-particle sp1"></div>
+        <div class="sparkle-particle sp2"></div>
+        <div class="sparkle-particle sp3"></div>
+        <div class="sparkle-particle sp4"></div>
+        <div class="sparkle-particle sp5"></div>
+        <div class="sparkle-particle sp6"></div>
+
+        <!-- Ribbon Decorations -->
+        <img src="/img/uhuy.png" class="ribbon-deco rd1" alt="Ribbon">
+        <img src="/img/uhuy.png" class="ribbon-deco rd2" alt="Ribbon">
+
+        <!-- Falling Petals -->
+        <span class="petal p1">🌸</span>
+        <span class="petal p2">🌷</span>
+        <span class="petal p3">🌸</span>
+        <span class="petal p4">🌷</span>
+        <span class="petal p5">🌸</span>
+        <span class="petal p6">🌷</span>
+    </div>
+
+    <!-- ============================================================
+    LOGIN CARD - ULTRA COQUETTE
+    ============================================================ -->
+    <div class="login-wrapper">
+        <div class="login-card">
+
+            <!-- Corner Decorations -->
+            <span class="corner-deco cd1">✦</span>
+            <span class="corner-deco cd2">✦</span>
+            <span class="corner-deco cd3">✦</span>
+            <span class="corner-deco cd4">✦</span>
+
+            <!-- Back Button -->
+            <a href="coba.html" class="back-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+            </a>
+
             <!-- Title -->
-            <h1 class="text-center text-2xl font-bold text-white mb-6">Welcome To Log In</h1>
-            
-            <!-- Login Form -->
-            <form class="space-y-4">
-                <!-- Email Field -->
-                <div class="mb-4">
-                    <label for="email" class="block text-white mb-2">Email</label>
-                    <input type="email" id="email" placeholder="Email- Addres" class="input-field w-full px-4 py-2 text-gray-700" />
+            <h1 class="login-title">Welcome Back</h1>
+            <p class="login-subtitle">
+                <span>✧</span> log in to your account <span>✧</span>
+            </p>
+
+            <!-- Form -->
+            <form id="loginForm" novalidate>
+                <div class="form-group">
+                    <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                    <input type="email" id="email" placeholder="Email Address" class="input-coquette" required />
                 </div>
-                
-                <!-- Password Field -->
-                <div class="mb-4">
-                    <label for="password" class="block text-white mb-2">Password</label>
-                    <input type="password" id="password" class="input-field w-full px-4 py-2 text-gray-700" />
+
+                <div class="form-group">
+                    <label for="password"><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="password" placeholder="••••••••" class="input-coquette" required />
                 </div>
-                
-                <!-- Links -->
-                <div class="flex justify-end">
-                    <div class="text-right">
-                        <a href="#" class="block text-white text-sm italic hover:underline">Recovery Password</a>
-                        <a href="#" class="block text-white text-sm italic hover:underline">Creat Acount</a>
-                    </div>
+
+                <div class="links-row">
+                    <a href="#">Recovery Password</a>
+                    <a href="register.html">Create Account</a>
                 </div>
-                
-                <!-- Login Button -->
-                <div  class="mt-6">
-                    <a href="home2.html" class="login-button w-full py-2 text-white font-bold rounded-md block text-center">Login</a>
-                </div>
-                
+
+                <button type="submit" class="btn-login" id="loginBtn">
+                    <span class="btn-text">✦ Login</span>
+                    <span class="spinner"></span>
+                </button>
+
                 <!-- Divider -->
-                <div class="divider my-6">
-                    <div class="divider-line mr-3"></div>
-                    <span class="text-sm">or continue with</span>
-                    <div class="divider-line ml-3"></div>
+                <div class="divider-coquette">
+                    <span class="line"></span>
+                    <span class="diamond">✦</span>
+                    <span>or continue with</span>
+                    <span class="diamond">✦</span>
+                    <span class="line"></span>
                 </div>
-                
-                <!-- Social Login -->
-                <div class="flex justify-center space-x-4">
+
+                <!-- Social Icons -->
+                <div class="social-icons">
                     <a href="#" class="social-icon">
-                        <img src="https://cdn.cdnlogo.com/logos/g/35/google-icon.svg" alt="Google" class="w-6 h-6">
+                        <img src="https://cdn.cdnlogo.com/logos/g/35/google-icon.svg" alt="Google" />
                     </a>
                     <a href="#" class="social-icon">
-                        <img src="https://cdn.cdnlogo.com/logos/w/43/whatsapp.svg" alt="WhatsApp" class="w-6 h-6">
+                        <img src="https://cdn.cdnlogo.com/logos/w/43/whatsapp.svg" alt="WhatsApp" />
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-tiktok"></i>
                     </a>
                 </div>
-                
+
                 <!-- Google Play Badge -->
-                <div class="flex justify-center mt-4">
+                <div class="play-badge">
                     <a href="#">
-                        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" class="h-10">
+                        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" />
                     </a>
+                </div>
+
+                <!-- Footer Text -->
+                <div class="coquette-footer-text">
+                    <span>𖹭</span> always happy <span>𖹭</span>
                 </div>
             </form>
+
         </div>
     </div>
+
+    <!-- ============================================================
+    JAVASCRIPT - LOGIN FUNCTIONALITY
+    ============================================================ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // ===== DOM Elements =====
+            const form = document.getElementById('loginForm');
+            const btn = document.getElementById('loginBtn');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+
+            // ===== Toast Function =====
+            function showToast(message, type = 'success') {
+                const existing = document.querySelector('.toast-login');
+                if (existing) existing.remove();
+
+                const toast = document.createElement('div');
+                toast.className = `toast-login ${type}`;
+                const icon = type === 'success' ? '💕' : '⚠️';
+                toast.innerHTML = `
+                    <span class="toast-icon">${icon}</span>
+                    ${message}
+                `;
+                document.body.appendChild(toast);
+
+                setTimeout(() => toast.classList.add('show'), 50);
+
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    setTimeout(() => toast.remove(), 500);
+                }, 3000);
+            }
+
+            // ===== Check if user exists =====
+            function findUser(email, password) {
+                const users = JSON.parse(localStorage.getItem('users')) || [];
+                return users.find(user => 
+                    user.email.toLowerCase() === email.toLowerCase() && 
+                    user.password === password
+                );
+            }
+
+            // ===== Check if user is already logged in =====
+            if (localStorage.getItem('isLoggedIn') === 'true') {
+                // Auto redirect to home if already logged in
+                // window.location.href = 'home2.html';
+            }
+
+            // ===== FORM SUBMIT =====
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const email = emailInput.value.trim();
+                const password = passwordInput.value.trim();
+
+                // ===== Validate inputs =====
+                if (!email || !password) {
+                    showToast('Please fill in all fields ✨', 'error');
+                    if (!email) emailInput.classList.add('error');
+                    if (!password) passwordInput.classList.add('error');
+                    return;
+                }
+
+                // ===== Check if user exists =====
+                const user = findUser(email, password);
+
+                if (user) {
+                    // ===== Login success =====
+                    btn.classList.add('loading');
+
+                    setTimeout(() => {
+                        // Save login status
+                        localStorage.setItem('isLoggedIn', 'true');
+                        localStorage.setItem('currentUser', JSON.stringify(user));
+
+                        btn.classList.remove('loading');
+                        showToast(`Welcome back, ${user.fullname}! 💕`, 'success');
+
+                        // Redirect to home after 1.5 seconds
+                        setTimeout(() => {
+                            window.location.href = 'home2.html';
+                        }, 1500);
+
+                    }, 1000);
+
+                } else {
+                    // ===== Login failed =====
+                    // Check if email exists
+                    const users = JSON.parse(localStorage.getItem('users')) || [];
+                    const emailExists = users.some(u => u.email.toLowerCase() === email.toLowerCase());
+
+                    if (!emailExists) {
+                        showToast('Email not found. Please register first! 📝', 'error');
+                        emailInput.classList.add('error');
+                        passwordInput.classList.remove('error');
+                    } else {
+                        showToast('Incorrect password. Please try again! 🔑', 'error');
+                        passwordInput.classList.add('error');
+                        emailInput.classList.remove('error');
+                    }
+                }
+            });
+
+            // ===== Remove error on focus =====
+            emailInput.addEventListener('focus', function() {
+                this.classList.remove('error');
+            });
+
+            passwordInput.addEventListener('focus', function() {
+                this.classList.remove('error');
+            });
+
+            console.log('💕 Login page initialized!');
+        });
+    </script>
+
 </body>
 </html>
-
-
-
-
-
-
